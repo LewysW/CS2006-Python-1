@@ -10,8 +10,21 @@ class TwistedInt:
 
     # define "*"
     def __mul__(self, other):
-        return TwistedInt((self.object + other.object + self.object * other.object) % self.mod, self.mod)
+        try:
+            if self.mod == other.mod:
+                return TwistedInt((self.object + other.object + self.object * other.object) % self.mod, self.mod)
+            else:
+                raise ValueError
+        except ValueError:
+            return "Cannot multiply two values with different mods"
+
 
     # define "+"
     def __add__(self, other):
-        return TwistedInt((self.object + other.object) % self.mod, self.mod)
+        try:
+            if self.mod == other.mod:
+                return TwistedInt((self.object + other.object) % self.mod, self.mod)
+            else:
+                raise ValueError
+        except ValueError:
+            return "Cannot add two values with different mods"
