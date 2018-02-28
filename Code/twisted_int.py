@@ -1,5 +1,7 @@
 class TwistedInt:
 
+    # Add validation for negative value of n (mod) and value of obj < 0 or > (n - 1)
+    # also add validation for float value of n or obj
     def __init__(self, obj, mod):
         self.object = obj
         self.mod = mod
@@ -17,7 +19,6 @@ class TwistedInt:
                 raise ValueError
         except ValueError:
             return "Cannot multiply two values with different mods"
-
 
     # define "+"
     def __add__(self, other):
