@@ -23,13 +23,13 @@ class TwistedInt:
 
     # overwrite "print"
     def __str__(self):
-        return "<" + str(self.object)+ ":" + str(self.mod) + ">"
+        return "<" + str(self.object)+ ":" + str(self.n) + ">"
 
     # define "*"
     def __mul__(self, other):
         try:
-            if self.mod == other.mod:
-                return TwistedInt((self.object + other.object + self.object * other.object) % self.mod, self.mod)
+            if self.n == other.n:
+                return TwistedInt((self.object + other.object + self.object * other.object) % self.n, self.n)
             else:
                 raise InvalidModException
         except InvalidModException:
@@ -38,12 +38,27 @@ class TwistedInt:
     # define "+"
     def __add__(self, other):
         try:
-            if self.mod == other.mod:
-                return TwistedInt((self.object + other.object) % self.mod, self.mod)
+            if self.n == other.n:
+                return TwistedInt((self.object + other.object) % self.n, self.n)
             else:
-                raise ValueError
-        except ValueError:
+                raise InvalidModException
+        except InvalidModException:
             return "Cannot add two values with different mods"
+
+    # Easy Requirement 1
+    # Returns set of twisted ints that return 1 when multiplied by themselves for each set of n -> upperN
+    @staticmethod
+    def mulEqualToOne(upperN):
+        validInts = []
+
+        for n in range(0, upperN):
+            for i in range(1, n):
+                x = TwistedInt(i, n)
+
+                if str(x * x) == str(TwistedInt(1, n)):
+                    validInts.append(str(x))
+
+        return validInts
 
 # TODO move to exception module
 class InvalidModException(Exception):
