@@ -1,10 +1,25 @@
 class TwistedInt:
 
-    # Add validation for negative value of n (mod) and value of obj < 0 or > (n - 1)
-    # also add validation for float value of n or obj
-    def __init__(self, obj, mod):
-        self.object = obj
-        self.mod = mod
+    # TODO Add validation for non int values
+    # TODO Add unit tests for current functions
+    # TODO move validation cod to another module
+    # Validates user input.
+    #Throws and exception for each different invalid piece of user input.
+    def __init__(self, obj, n):
+        while True:
+            try:
+                if n < 0:
+                    raise InvalidModException
+                elif obj < 0 or obj >= n:
+                    raise InvalidObjException
+                else:
+                    self.object = obj
+                    self.n = n
+                    break
+            except InvalidModException:
+                n = int(input("Please re-enter your n (mod) value (must be greater than or equal to 0):\n"))
+            except InvalidObjException:
+                obj = int(input("Please re-enter your integer value (must be in domain 0,1,...,n-1):\n"))
 
     # overwrite "print"
     def __str__(self):
@@ -16,8 +31,8 @@ class TwistedInt:
             if self.mod == other.mod:
                 return TwistedInt((self.object + other.object + self.object * other.object) % self.mod, self.mod)
             else:
-                raise ValueError
-        except ValueError:
+                raise InvalidModException
+        except InvalidModException:
             return "Cannot multiply two values with different mods"
 
     # define "+"
@@ -29,3 +44,10 @@ class TwistedInt:
                 raise ValueError
         except ValueError:
             return "Cannot add two values with different mods"
+
+# TODO move to exception module
+class InvalidModException(Exception):
+    pass
+
+class InvalidObjException(Exception):
+    pass
