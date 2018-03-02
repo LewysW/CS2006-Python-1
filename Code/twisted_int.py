@@ -4,7 +4,7 @@ from exceptions import *
 class TwistedInt:
 
     # TODO Add unit tests for current functions
-    # TODO move validation code to another module
+    # TODO move validation code to main
     # Validates user input.
     #Throws and exception for each different invalid piece of user input.
     def __init__(self, obj, n):

@@ -2,6 +2,7 @@
 
 from twisted_int import *
 
+#TODO throw exceptions for negatives
 def isCommutativeAdd(n):
     """Tests x ⊕ y = y ⊕ x"""
 
