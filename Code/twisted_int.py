@@ -56,8 +56,8 @@ class TwistedInt:
     def mulEqualToOne(upperN):
         validInts = []
 
-        for n in range(1, upperN):
-            for i in range(0, n):
+        for n in range(1, upperN + 1):
+            for i in range(n):
                 x = TwistedInt(i, n)
 
                 if (x * x).object == 1:

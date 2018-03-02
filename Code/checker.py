@@ -1,7 +1,10 @@
+"""Checks whether or not for a given n the following properties hold for all x, y, z ∈ Zn:"""
+
 from twisted_int import *
 
-#Easy Requirement 2.1
 def isCommutativeAdd(n):
+    """Tests x ⊕ y = y ⊕ x"""
+
     xlist = ylist = [x for x in range(0, n)]
 
     for x, y in itertools.product(xlist, ylist):
@@ -13,9 +16,9 @@ def isCommutativeAdd(n):
 
     return True
 
-    #Easy Requirement 2.2
-@staticmethod
 def isCommutativeMul(n):
+    """Tests x ⊗ y = y ⊗ x """
+
     xlist = ylist = [x for x in range(0, n)]
 
     for x, y in itertools.product(xlist, ylist):
@@ -27,9 +30,9 @@ def isCommutativeMul(n):
 
     return True
 
-#Easy Requirement 2.3
-@staticmethod
 def isCommutativePrecedenceAdd(n):
+    """Tests (x ⊕ y) ⊕ z = x ⊕ (y ⊕ z)"""
+
     xlist = ylist = zlist = [x for x in range(0, n)]
 
     for x, y, z in itertools.product(xlist, ylist, zlist):
@@ -42,9 +45,9 @@ def isCommutativePrecedenceAdd(n):
 
     return True
 
-#Easy Requirement 2.4
-@staticmethod
 def isCommutativePrecedenceMul(n):
+    """Tests (x ⊗ y) ⊗ z = x ⊗ (y ⊗ z)"""
+
     xlist = ylist = zlist = [x for x in range(0, n)]
 
     for x, y, z in itertools.product(xlist, ylist, zlist):
@@ -57,9 +60,9 @@ def isCommutativePrecedenceMul(n):
 
     return True
 
-#Easy Requirement 2.5
-@staticmethod
 def isCommutativeCommonFac(n):
+    """Tests (x ⊕ y) ⊗ z = (x ⊗ z) ⊕ (y ⊗ z)"""
+
     xlist = ylist = zlist = [x for x in range(0, n)]
 
     for x, y, z in itertools.product(xlist, ylist, zlist):
