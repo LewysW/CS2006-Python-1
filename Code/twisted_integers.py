@@ -27,7 +27,7 @@ class TwistedIntegers:
             return out
 
         def size(self):
-            return self.n - 1
+            return self.n
 
 # Iterator for TwistedIntegers
 class IteratorOfTwistedIntegers:
@@ -39,7 +39,7 @@ class IteratorOfTwistedIntegers:
 
     # Checks if iterator has next element from TwistedIntegers
     def hasNext(self):
-        return self.index <= self.twistedIntegers.size()
+        return self.index < self.twistedIntegers.size()
 
     # Gets next element from TwistedIntegers if there is one and increments Index
     # otherwise raises index error.
