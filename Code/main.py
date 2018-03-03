@@ -1,3 +1,3 @@
 from checker import *
 from twisted_integers import *
-from medium_two import *
+from iterator_funcs import *
