@@ -14,27 +14,35 @@ class TwistedIntegers:
             self.n = n
             for i in range(n):
                 self.integers.append(TwistedInt(i, n))
+            # Declares iterator for TwistedIntegers instance
             self.iterator = IteratorOfTwistedIntegers(self)
 
-        # Define iterator instance here
+        # Prints out TwistedIntegers using iterator
         def __str__(self):
             out = ""
-
+            # Iterates over TwistedIntegers while there is another elements
+            # and appends each to a string to be returned
             while self.iterator.hasNext():
                 out += str(self.iterator.next()) + "\n"
             return out
 
-        def Size(self):
+        def size(self):
             return self.n - 1
 
+# Iterator for TwistedIntegers
 class IteratorOfTwistedIntegers:
+    # Sets twistedIntegers to list to be iterated over
+    # and sets initial index to 0
     def __init__(self, twistedIntegers):
         self.twistedIntegers = twistedIntegers
         self.index = 0
 
+    # Checks if iterator has next element from TwistedIntegers
     def hasNext(self):
-        return self.index <= self.twistedIntegers.Size()
+        return self.index <= self.twistedIntegers.size()
 
+    # Gets next element from TwistedIntegers if there is one and increments Index
+    # otherwise raises index error.
     def next(self):
         if not(self.hasNext()):
             raise IndexError("Index of iterator is greater than or equal to length of twistedIntegers")
