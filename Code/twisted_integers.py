@@ -29,6 +29,7 @@ class TwistedIntegers:
         def size(self):
             return self.n
 
+
 # Iterator for TwistedIntegers
 class IteratorOfTwistedIntegers:
     # Sets twistedIntegers to list to be iterated over
