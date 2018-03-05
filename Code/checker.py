@@ -1,6 +1,50 @@
+"""Easy tasks 1 & 2"""
+
 from twisted_int import *
 from itertools import combinations_with_replacement
 from itertools import product
+
+# EASY REQUIREMENT 1
+
+# TODO add counter for each valid value for each n
+def mulEqualToOne(n):
+    """Returns a list of TwistedInts that return 1 when multiplied by themselves for the set Zn
+
+    For every value under n, iterates through values to find TwistedInts, checking to see if they return 1 when squared.
+    All valid TwistedInts are returned as a List
+
+    Args:
+        n: value for use in finding Zn. (tests for all values under n)
+
+    Returns:
+        list: containing all valid TwistedInts according to criteria
+
+    Examples:
+        >>> mulEqualToOne(3)
+        ['<1:2>']
+        >>> mulEqualToOne(10)
+        ['<1:2>', '<2:7>', '<3:7>']
+        >>> mulEqualToOne(0)
+        []
+    """
+
+    if type(n) is str:
+        raise TypeError("argument (Mod) must be an int")
+    if n < 0:
+        raise InvalidModError("argument (Mod) must be greater than 0")
+
+    validInts = []
+
+    for mod in range(1, n + 1):
+        for val in range(mod):
+            x = TwistedInt(val, mod)
+
+            if (x * x).object == 1:
+                validInts.append(str(x))
+
+    return validInts
+
+# EASY REQUIREMENT 2
 
 #TODO throw exceptions for negatives
 def isCommutativeAdd(n):
@@ -35,6 +79,7 @@ def isCommutativeAdd(n):
 
     return True
 
+
 def isCommutativeMul(n):
     """Tests x ⊗ y = y ⊗ x for all x, y, z ∈ Zn
 
@@ -66,6 +111,7 @@ def isCommutativeMul(n):
             return False
 
     return True
+
 
 def isCommutativePrecedenceAdd(n):
     """Tests (x ⊕ y) ⊕ z = x ⊕ (y ⊕ z)
@@ -104,6 +150,7 @@ def isCommutativePrecedenceAdd(n):
 
     return True
 
+
 def isCommutativePrecedenceMul(n):
     """Tests (x ⊗ y) ⊗ z = x ⊗ (y ⊗ z)
 
@@ -141,6 +188,7 @@ def isCommutativePrecedenceMul(n):
 
     return True
 
+
 def isCommutativeCommonFac(n):
     """Tests (x ⊕ y) ⊗ z = (x ⊗ z) ⊕ (y ⊗ z)
 
@@ -177,6 +225,7 @@ def isCommutativeCommonFac(n):
             return False
 
     return True
+
 
 def getAllCombinations(n, r):
     """Returns a sorted list of all the possible combinations of the numbers under a value.
