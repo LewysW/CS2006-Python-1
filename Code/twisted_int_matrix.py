@@ -18,7 +18,7 @@ class TwistedIntMatrix:
 
         # Raises MismatchedModException if a value in the matrix has a different n to the rest.
         for twistedInt in self.twistedInts:
-            if not(twistedInt.n == n):
+            if not(twistedInt.n == self.n):
                 raise MismatchedModException("Twisted ints do not all have the same mod value.")
 
         # Populates the matrix using the list of twisted ints.
@@ -35,20 +35,59 @@ class TwistedIntMatrix:
     def __str__(self):
         out = ""
 
-        while self.iterator.hasNext():
-            out += str(self.iterator.next()) + "\n"
+        # Current number of ints in matrix added to output
+        currentInt = 0
 
+        while self.iterator.hasNext():
+            out += str(self.iterator.next()) + " "
+
+            currentInt += 1
+
+            # Decides whether to print a new line based on y dimension and current int
+            if (currentInt % self.y) == 0:
+                out += "\n"
+
+        self.iterator = IteratorOfTwistedIntMatrix(self)
         return out
 
     # define "*"
     def __mul__(self, other):
+        if not(self.y == other.x):
+            raise ValueError("Y dimension of matrix a is not equal to X dimension of matrix b.")
 
+        if not(self.n == other.n):
+            raise MismatchedModException("Mod value of matrix a is not equal to mod value of matrix b.")
+
+        results = []
+
+        for x in range(0, self.x):
+            for y in range(0, other.y):
+                results.append(self.calcDotProduct(self.matrix[x], self.getCol(other, y), self.n))
+
+        return TwistedIntMatrix(self.x, other.y, results)
+
+    # Gets the dot product of a given row and column of two matrices
+    def calcDotProduct(self, list1, list2, n):
+        dotProduct = TwistedInt(0, n)
+
+        for i in range(0, len(list1)):
+            dotProduct += list1[i] * list2[i]
+
+        return dotProduct
+
+    # Returns the column at index y of a given matrix
+    def getCol(self, intMatrix, y):
+        col = []
+        for x in range(0, intMatrix.x):
+            col.append(intMatrix.matrix[x][y])
+
+        return col
 
     # define "+"
-    def __add__(self, other):
-        
+    #def __add__(self, other):
 
 class IteratorOfTwistedIntMatrix:
+
     # Sets twistedIntegers to list to be iterated over
     # and sets initial index to 0
     def __init__(self, matrix):
