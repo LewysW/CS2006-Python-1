@@ -23,15 +23,13 @@ def isCommutativeAdd(n):
         <1:2> <1:2>
         True
     """
-
-    numList = range(n)
-    numStr = ''.join(str(e) for e in numList)
-
-    for nums in combinations_with_replacement(numStr, 2):
+                # iterates through all combinations of numbers in range
+    for nums in combinations_with_replacement(range(n), 2):
+                # creates new twisted integers
         x = int(nums[0]); a = TwistedInt(x, n)
         y = int(nums[1]); b = TwistedInt(y, n)
         print(str(a) + " " + str(b))
-
+                # tests them
         if (a + b).object != (b + a).object:
             return False
 
@@ -57,15 +55,13 @@ def isCommutativeMul(n):
         <1:2> <1:2>
         True
     """
-
-    numList = range(n)
-    numStr = ''.join(str(e) for e in numList)
-
-    for nums in combinations_with_replacement(numStr, 2):
+                # iterates through all combinations of numbers in range
+    for nums in combinations_with_replacement(range(n), 2):
+                # creates new twisted ints
         x = int(nums[0]); a = TwistedInt(x, n)
         y = int(nums[1]); b = TwistedInt(y, n)
         print(str(a) + " " + str(b))
-
+                # tests them
         if (a * b).object != (b * a).object:
             return False
 
@@ -95,13 +91,14 @@ def isCommutativePrecedenceAdd(n):
         <1:2> <1:2> <1:2>
         True
     """
-
+                # iterates through all combinations of 3 values in range
     for nums in getAllCombinations(n, 3):
+                # creates twisted ints
         x = int(nums[0]); a = TwistedInt(x, n)
         y = int(nums[1]); b = TwistedInt(y, n)
         z = int(nums[2]); c = TwistedInt(z, n)
         print(str(a) + " " + str(b) + " " + str(c))
-
+                # tests them
         if ((a + b) + c).object != (a + (b + c)).object:
             return False
 
@@ -131,13 +128,14 @@ def isCommutativePrecedenceMul(n):
         <1:2> <1:2> <1:2>
         True
     """
-
+                # iterates through all combinations of 3 values in range
     for nums in getAllCombinations(n, 3):
+                # creates twisted ints
         x = int(nums[0]); a = TwistedInt(x, n)
         y = int(nums[1]); b = TwistedInt(y, n)
         z = int(nums[2]); c = TwistedInt(z, n)
         print(str(a) + " " + str(b) + " " + str(c))
-
+                # tests them
         if ((a * b) * c).object != (a * (b * c)).object:
             return False
 
@@ -167,13 +165,14 @@ def isCommutativeCommonFac(n):
         <1:2> <1:2> <1:2>
         True
     """
-
+                # iterates through all combinations of 3 values in range
     for nums in getAllCombinations(n, 3):
+                # creates twisted ints
         x = int(nums[0]); a = TwistedInt(x, n)
         y = int(nums[1]); b = TwistedInt(y, n)
         z = int(nums[2]); c = TwistedInt(z, n)
         print(str(a) + " " + str(b) + " " + str(c))
-
+                # tests them
         if ((a + b) * c).object != ((a * c) + (b * c)).object:
             return False
 
@@ -192,10 +191,14 @@ def getAllCombinations(n, r):
     Examples:
         >>> getAllCombinations(2,3)
         [(0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)]
-        
+
         >>> getAllCombinations(3,2)
         [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
-
     """
     numList = set(product(range(n), repeat = r))
     return sorted(numList)
+
+def thing():
+    from itertools import permutations
+    for x in sorted(set(permutations(range(1, 6), 5))):
+        print(combs)

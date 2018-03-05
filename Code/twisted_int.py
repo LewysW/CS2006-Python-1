@@ -1,7 +1,9 @@
-import itertools
 from exceptions import *
 
 class TwistedInt:
+    """A class of TwistedInt, defined in the specification.
+    
+    Has special functions for addition and multiplication (as well as converting to a string)"""
 
     # TODO Add unit tests for current functions
     # TODO move validation code to main
