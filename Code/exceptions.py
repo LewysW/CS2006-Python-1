@@ -1,11 +1,11 @@
-class InvalidModException(Exception):
-   """Invalid mod value"""
+class InvalidModError(Exception):
+   """Exception raised for an invalid Mod value"""
+   pass
 
-class InvalidObjException(Exception):
-    """Invalid obj value"""
+class InvalidValError(Exception):
+    """Exception raised for an invalid Value input"""
+    pass
 
-class InvalidTypeException(Exception):
-    """Expected Int""" # currently unused
-
-class MismatchedModException(Exception):
-    """TwistedInts have different mod values"""
+class MismatchedModError(Exception):
+    """Exception raised when TwistedInts have different mod values""" 
+    pass
