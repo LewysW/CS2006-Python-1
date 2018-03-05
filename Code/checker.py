@@ -37,7 +37,7 @@ def isCommutativeAdd(n):
 
 def isCommutativeMul(n):
     """Tests x ⊗ y = y ⊗ x for all x, y, z ∈ Zn
-    
+
     Tests for every value under n, ignoring duplicates.
     Once <0:n> * <1:n>  = <1:n> * <0:n> has been confirmed,
     no need to test <1:n> * <0:n> = <0:n> * <1:n>
@@ -69,7 +69,7 @@ def isCommutativeMul(n):
 
 def isCommutativePrecedenceAdd(n):
     """Tests (x ⊕ y) ⊕ z = x ⊕ (y ⊕ z)
-    
+
     Tests for every value under n.
     Ignoring duplicates is harder here so they are currently not ignored.
 
@@ -197,8 +197,3 @@ def getAllCombinations(n, r):
     """
     numList = set(product(range(n), repeat = r))
     return sorted(numList)
-
-def thing():
-    from itertools import permutations
-    for x in sorted(set(permutations(range(1, 6), 5))):
-        print(combs)

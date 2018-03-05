@@ -83,8 +83,66 @@ class TwistedIntMatrix:
 
         return col
 
-    # define "+"
-    #def __add__(self, other):
+    # Returns the set of possible matrices given a list of matrices
+    @staticmethod
+    def getPossibleMatrices(matrices):
+        from itertools import permutations
+        #List to store results. Set can't tell difference between matrix objects
+        results = []
+
+        # Iterates over the unique permutations of index orderings
+        for x in sorted(set(permutations(range(0, len(matrices)), len(matrices)))):
+            # Initialises temp with matrix at 0th index for current permutation
+            temp = matrices[x[0]]
+            try:
+                # Iterates over indices of remaining matrices
+                for i in range(1, len(x)):
+                    # Multiplies initial matrix by every other index
+                    temp *= matrices[x[i]]
+
+                # Adds result to list
+                if not(TwistedIntMatrix.contains(results, temp)):
+                    results.append(temp)
+            except ValueError:
+                # If matrices are not computable then contiues to next permutation of matrice orderings
+                continue
+
+        return results
+
+    # Returns whether or not matrix is present in list
+    @staticmethod
+    def contains(matrixList, matrix):
+        for i in range(0, len(matrixList)):
+            iteratorList = IteratorOfTwistedIntMatrix(matrixList[i])
+            iteratorMatrix = IteratorOfTwistedIntMatrix(matrix)
+
+            while (iteratorMatrix.hasNext() and iteratorList.hasNext()):
+                equal = (iteratorMatrix.next().object == iteratorList.next().object)
+
+            if (equal):
+                return equal
+
+        return False
+
+
+
+    @staticmethod
+    def test():
+        a = TwistedInt(0,9)
+        b = TwistedInt(1,9)
+        c = TwistedInt(2,9)
+
+
+        matrix = TwistedIntMatrix(1,1,[a])
+        matrix1 = TwistedIntMatrix(1,1,[b])
+        matrix2 = TwistedIntMatrix(1,1,[c])
+
+        matrices = [matrix, matrix1,matrix2]
+
+        results = (TwistedIntMatrix.getPossibleMatrices(matrices))
+
+        for x in results:
+            print(x)
 
 class IteratorOfTwistedIntMatrix:
 
