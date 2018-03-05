@@ -1,7 +1,7 @@
 from twisted_integers import *
 
-"""Finds valid values of τ where τ ⊕ x = x"""
 def tauPlusXEqualsX(n):
+    """Finds valid values of τ where τ ⊕ x = x"""
     iteratorT = iteratorX = IteratorOfTwistedIntegers(TwistedIntegers(n))
     validIntegers = []
     validInt = True
@@ -24,8 +24,8 @@ def tauPlusXEqualsX(n):
 
     return validIntegers
 
-"""Finds valid values of ε where ε ⊗ x = x"""
 def epsilonMulXEqualsX(n):
+    """Finds valid values of ε where ε ⊗ x = x"""
     iteratorE = iteratorX = IteratorOfTwistedIntegers(TwistedIntegers(n))
     validIntegers = []
     validInt = True

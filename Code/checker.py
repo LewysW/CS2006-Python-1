@@ -4,13 +4,21 @@ from twisted_int import *
 
 #TODO throw exceptions for negatives
 def isCommutativeAdd(n):
-    """Tests x ⊕ y = y ⊕ x"""
+    """Tests that x ⊕ y = y ⊕ x for all x, y, z ∈ Zn
 
-    xlist = ylist = [x for x in range(0, n)]
+    Tests for every value under n, ignoring duplicates.
+    e.g. Once <0:n> + <1:n>  = <1:n> + <0:n> has been confirmed,
+    no need to test <1:n> + <0:n> = <0:n> + <1:n>
+    """
+    numList = [x for x in range(n)]
+    numStr = ''.join(str(y) for y in numList)
 
-    for x, y in itertools.product(xlist, ylist):
+    for nums in itertools.combinations_with_replacement(numStr,2):
+        x = int(nums[0])
+        y = int(nums[1])
         a = TwistedInt(x, n)
         b = TwistedInt(y, n)
+        print(str(a) + " + " + str(b))
 
         if (a + b).object != (b + a).object:
             return False
@@ -18,13 +26,21 @@ def isCommutativeAdd(n):
     return True
 
 def isCommutativeMul(n):
-    """Tests x ⊗ y = y ⊗ x """
+    """Tests x ⊗ y = y ⊗ x for all x, y, z ∈ Zn
+    
+    Tests for every value under n, ignoring duplicates.
+    e.g. Once <0:n> * <1:n>  = <1:n> * <0:n> has been confirmed,
+    no need to test <1:n> * <0:n> = <0:n> * <1:n>"""
 
-    xlist = ylist = [x for x in range(0, n)]
+    numList = [x for x in range(n)]
+    numStr = ''.join(str(y) for y in numList)
 
-    for x, y in itertools.product(xlist, ylist):
+    for nums in itertools.combinations_with_replacement(numStr,2):
+        x = int(nums[0])
+        y = int(nums[1])
         a = TwistedInt(x, n)
         b = TwistedInt(y, n)
+        print(str(a) + " * " + str(b))
 
         if (a * b).object != (b * a).object:
             return False
@@ -34,12 +50,17 @@ def isCommutativeMul(n):
 def isCommutativePrecedenceAdd(n):
     """Tests (x ⊕ y) ⊕ z = x ⊕ (y ⊕ z)"""
 
-    xlist = ylist = zlist = [x for x in range(0, n)]
+    numList = [x for x in range(n)]
+    numStr = ''.join(str(y) for y in numList)
 
-    for x, y, z in itertools.product(xlist, ylist, zlist):
+    for nums in itertools.combinations_with_replacement(numStr,3):
+        x = int(nums[0])
+        y = int(nums[1])
+        z = int(nums[2])
         a = TwistedInt(x, n)
         b = TwistedInt(y, n)
         c = TwistedInt(z, n)
+        print("(" + str(a) + " + " + str(b) + ") + " + str(c))
 
         if ((a + b) + c).object != (a + (b + c)).object:
             return False
@@ -49,12 +70,17 @@ def isCommutativePrecedenceAdd(n):
 def isCommutativePrecedenceMul(n):
     """Tests (x ⊗ y) ⊗ z = x ⊗ (y ⊗ z)"""
 
-    xlist = ylist = zlist = [x for x in range(0, n)]
+    numList = [x for x in range(n)]
+    numStr = ''.join(str(y) for y in numList)
 
-    for x, y, z in itertools.product(xlist, ylist, zlist):
+    for nums in itertools.combinations_with_replacement(numStr,3):
+        x = int(nums[0])
+        y = int(nums[1])
+        z = int(nums[2])
         a = TwistedInt(x, n)
         b = TwistedInt(y, n)
         c = TwistedInt(z, n)
+        print("(" + str(a) + " * " + str(b) + ") * " + str(c))
 
         if ((a * b) * c).object != (a * (b * c)).object:
             return False
@@ -64,12 +90,17 @@ def isCommutativePrecedenceMul(n):
 def isCommutativeCommonFac(n):
     """Tests (x ⊕ y) ⊗ z = (x ⊗ z) ⊕ (y ⊗ z)"""
 
-    xlist = ylist = zlist = [x for x in range(0, n)]
+    numList = [x for x in range(n)]
+    numStr = ''.join(str(y) for y in numList)
 
-    for x, y, z in itertools.product(xlist, ylist, zlist):
+    for nums in itertools.combinations_with_replacement(numStr,3):
+        x = int(nums[0])
+        y = int(nums[1])
+        z = int(nums[2])
         a = TwistedInt(x, n)
         b = TwistedInt(y, n)
         c = TwistedInt(z, n)
+        print("(" + str(a) + " + " + str(b) + ") * " + str(c))
 
         if ((a + b) * c).object != ((a * c) + (b * c)).object:
             return False
