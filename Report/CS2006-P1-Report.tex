@@ -54,10 +54,15 @@ The following functionality has been implemented:
 			\end{itemize}
 		\subsubsection{Hard}
 				\begin{itemize}
-					\item \textbf{Hard Requirement 1} - In the twisted\_int\_matrix.py file the class TwistedIntMatrix has been implemented which represents a matrix of TwistedInt objects. The \_\_init\_\_ function of the class takes an x and y dimension as well as a list of TwistedInt objects and creates a matrix containing the values in the list. The \_\_mul\_\_ function implements matrix multiplication (between two given matrices) using the row by column rule and the $\bigoplus$ and $\bigotimes$ operators. This is achieved using the calcDotProduct function which calculates the dot product between a row and a column of the two matrices (which itself uses the getCol function to access a column of the second matrix).
-					\item \textbf{Hard Requirement 2} - 
+					\item \textbf{Hard Requirement 1} - In the twisted\_int\_matrix.py file the class TwistedIntMatrix has been implemented which represents a matrix of TwistedInt objects. The \_\_init\_\_ function of the class takes an x and y dimension as well as a list of TwistedInt objects and creates a matrix containing the values in the list. The \_\_mul\_\_ function implements matrix multiplication (between two given matrices) using the row by column rule and the $\bigoplus$ and $\bigotimes$ operators. This is achieved using the calcDotProduct function which calculates the dot product between a row and a column of the two matrices (which itself uses the getCol function to access a column of the second matrix). \\\\ For the same requirement, an algorithm has been implemented using the function getPossibleMatrices(matrices) which takes a list of M matrices and calculates all of the possible unique matrices that may be obtained by multiplying these matrices, i.e. the set  \{g1 ⊗ g2 ⊗ . . . ⊗ gk $\vert$ k $\epsilon$ N, gi $\epsilon$ M \}.
+					\item \textbf{Hard Requirement 2} - The level of testing and documentation has been enhanced by including docstrings for every function and class, as well as example doctests within these docstrings that can be extracted and run to verify the correctness of the functions which they document.
 				\end{itemize}
 	\subsection{Further Features:}
+		The follow additional features have also been implemented:
+		\begin{itemize}
+			\item An iterator class, IteratorOfTwistedIntMatrix, has been implemented in twisted\_int\_matrix.py file which iterates over an instance of TwistedIntMatrix from top left to bottom right across the TwistedInt elements. As with the IteratorOfTwistedIntegers iterator, this iterator has a hasNext(), next() and \_\_init\_\_ functions.
+			\item 
+		\end{itemize}
 
 	\section{Design and Implementation}
 
@@ -73,7 +78,7 @@ The following functionality has been implemented:
 	\section{Summary of Provenance}
 			\subsection{Code Implemented by the Group} 
 
-			\subsection{Code Modified From the Provided Source Files}
+			\subsection{Code Modified From the Provided Example Code}
 
 			\subsection{Code Sourced From Elsewhere}
 				
