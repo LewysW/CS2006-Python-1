@@ -33,8 +33,8 @@ The following functionality has been implemented:
 	 From the suggested additional requirements, all of the easy, medium and hard requirements have been implemented:
 	 	\subsubsection{Easy}
 			\begin{itemize}
-				\item Easy Requirement 1 - The function 'mulEqualToOne(n)' has been developed in the checker.py file which calculates for a given n all elements x $\epsilon$ Zn such that x $\bigotimes$ x = 1, where 1 $\epsilon$ Zn
-				\item Easy Requirement 2 - For a given n functions (in checker.py) have been developed to check whether the following properties hold for all x, y, z $\epsilon$ Zn (each of which returns a boolean signifying whether the properties hold):
+				\item \textbf{Easy Requirement 1} - The function 'mulEqualToOne(n)' has been developed in the checker.py file which calculates for a given n all elements x $\epsilon$ Zn such that x $\bigotimes$ x = 1, where 1 $\epsilon$ Zn
+				\item \textbf{Easy Requirement 2} - For a given n functions (in checker.py) have been developed to check whether the following properties hold for all x, y, z $\epsilon$ Zn (each of which returns a boolean signifying whether the properties hold):
 				\begin{itemize}
 					\item x $\bigoplus$ y = y $\bigoplus$ x - 'isCommutativeAdd(n)'
 					\item x $\bigotimes$ y = y $\bigotimes$ x - 'isCommutativeMul(n)'
@@ -43,13 +43,20 @@ The following functionality has been implemented:
 					\item (x $\bigoplus$ y) $\bigotimes$ z = (x $\bigotimes$ y) $\bigoplus$ (y $\bigotimes$ z) - 'isDistributive(n)'
 				\end{itemize}
 				
-				\item Easy Requirement 3 - The file twisted\_integers.py contains a class TwistedIntegers which implements a data structure representing Zn with respect to the operations a $\bigoplus$ b = (a $\bigoplus$ b) mod n and a $\bigotimes$ b = (a $\bigotimes$ b) mod n and contains the methods \_\_init\_\_, \_\_str\_\_ and size where size returns the number of elements in Zn.
+				\item \textbf{Easy Requirement 3} - The file twisted\_integers.py contains a class TwistedIntegers which implements a data structure representing Zn with respect to the operations a $\bigoplus$ b = (a $\bigoplus$ b) mod n and a $\bigotimes$ b = (a $\bigotimes$ b) mod n and contains the methods \_\_init\_\_, \_\_str\_\_ and size where size returns the number of elements in Zn.
 			\end{itemize}
 
 		\subsubsection{Medium}
-
+			\begin{itemize}
+				\item \textbf{Medium Requirement 1} - In the twisted\_integers.py file (along with the aforementioned TwistedIntegers class) the IteratorOfTwistedIntegers class has been implemented to iterate over instances of TwistedIntegers and contains an \_\_init\_\_ function (to initialise it with a given instance of TwistedIntegers), a hasNext() boolean function (to indicate if the iterator has a next value) and a next() function (to return the next value in the iterator).
+				\item \textbf{Medium Requirement 2} - The function 'findValAdd(n)' in the twisted\_integers.py file finds for a given n all elements $\tau$ of Zn such that $\tau$ $\bigoplus$ x = x for all x $\epsilon$ Zn.
+				\item \textbf{Medium Requirement 3} - The function 'findValMul(n)' in the twisted\_integers.py file finds for a given n all elements $\varepsilon$ of Zn such that $\varepsilon$ $\bigotimes$ x = x for all x $\epsilon$ Zn.
+			\end{itemize}
 		\subsubsection{Hard}
-
+				\begin{itemize}
+					\item \textbf{Hard Requirement 1} - In the twisted\_int\_matrix.py file the class TwistedIntMatrix has been implemented which represents a matrix of TwistedInt objects. The \_\_init\_\_ function of the class takes an x and y dimension as well as a list of TwistedInt objects and creates a matrix containing the values in the list. The \_\_mul\_\_ function implements matrix multiplication (between two given matrices) using the row by column rule and the $\bigoplus$ and $\bigotimes$ operators. This is achieved using the calcDotProduct function which calculates the dot product between a row and a column of the two matrices (which itself uses the getCol function to access a column of the second matrix).
+					\item \textbf{Hard Requirement 2} - 
+				\end{itemize}
 	\subsection{Further Features:}
 
 	\section{Design and Implementation}

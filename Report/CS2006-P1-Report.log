@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.18)  6 MAR 2018 14:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.18)  6 MAR 2018 15:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -178,8 +178,19 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 23.
 Missing character: There is no Â in font cmr10!
 Missing character: There is no · in font cmr10!
- [3] [4]
-(./CS2006-P1-Report.aux) ) 
+ [3]
+Overfull \hbox (42.40544pt too wide) in paragraph at lines 52--53
+[]\OT1/cmr/bx/n/10 Medium Re-quire-ment 2 \OT1/cmr/m/n/10 - The func-tion 'find
+-Val-Add(n)' in the twisted[]integers.py
+ []
+
+
+Overfull \hbox (41.29433pt too wide) in paragraph at lines 53--54
+[]\OT1/cmr/bx/n/10 Medium Re-quire-ment 3 \OT1/cmr/m/n/10 - The func-tion 'find
+-Val-Mul(n)' in the twisted[]integers.py
+ []
+
+[4] [5] (./CS2006-P1-Report.aux) ) 
 Here is how much of TeX's memory you used:
  1509 strings out of 493039
  21669 string characters out of 6136943
@@ -187,20 +198,21 @@ Here is how much of TeX's memory you used:
  5057 multiletter control sequences out of 15000+600000
  7895 words of font info for 28 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 38i,6n,23p,415b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
- </usr/share/texlive/texmf-dist/fonts/pk/ljfour/publi
-c/cm/dpi600/cmmi10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm
-/dpi600/cmex10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi
-600/cmsy10.pk> </cs/home/locw/.cache/texlive/texmf-var/fonts/pk/ljfour/public/c
-m/cmbx12.600pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600
-/cmbx10.pk> </cs/home/locw/.cache/texlive/texmf-var/fonts/pk/ljfour/public/cm/c
-mbx12.720pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cm
-r10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr12.p
-k> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr17.pk>
-Output written on CS2006-P1-Report.pdf (4 pages, 74320 bytes).
+ 38i,6n,23p,753b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </usr/share/texlive/texmf-dist/fonts/pk/ljfo
+ur/public/cm/dpi600/cmmi10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/p
+ublic/cm/dpi600/cmex10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/publi
+c/cm/dpi600/cmsy10.pk> </cs/home/locw/.cache/texlive/texmf-var/fonts/pk/ljfour/
+public/cm/cmbx12.600pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/c
+m/dpi600/cmbx10.pk> </cs/home/locw/.cache/texlive/texmf-var/fonts/pk/ljfour/pub
+lic/cm/cmbx12.720pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/d
+pi600/cmr10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600
+/cmr12.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr1
+7.pk>
+Output written on CS2006-P1-Report.pdf (5 pages, 78597 bytes).
 PDF statistics:
- 283 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 294 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
