@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.3)  6 MAR 2018 19:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.3)  6 MAR 2018 20:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -210,74 +210,94 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 [5]
-Overfull \hbox (4.16821pt too wide) in paragraph at lines 74--75
+Overfull \hbox (4.16821pt too wide) in paragraph at lines 73--74
 []\OT1/cmr/bx/n/10 Medium Re-quire-ment 1 (twisted[]integer.py) \OT1/cmr/m/n/10
  - The It-er-a-to-rOfTwiste-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-[6] [7] [8] (./CS2006-P1-Report.aux) ) 
+[6] [7] <images/Test1.png, id=37, 537.00626pt x 909.3975pt>
+File: images/Test1.png Graphic file (type png)
+
+<use images/Test1.png>
+Package pdftex.def Info: images/Test1.png used on input line 86.
+(pdftex.def)             Requested size: 268.50247pt x 454.69765pt.
+ <images/Test2.png, id=39, 665.48625pt x 718.685pt>
+File: images/Test2.png Graphic file (type png)
+
+<use images/Test2.png>
+Package pdftex.def Info: images/Test2.png used on input line 87.
+(pdftex.def)             Requested size: 332.74231pt x 359.34161pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+ []
+
+[8 <./images/Test1.png>] [9 <./images/Test2.png>] [10] (./CS2006-P1-Report.aux)
+ ) 
 Here is how much of TeX's memory you used:
- 1511 strings out of 493039
- 21704 string characters out of 6136944
+ 1523 strings out of 493039
+ 21899 string characters out of 6136944
  85666 words of memory out of 5000000
- 5059 multiletter control sequences out of 15000+600000
+ 5067 multiletter control sequences out of 15000+600000
  7895 words of font info for 28 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 38i,6n,23p,2051b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
- </usr/share/texlive/texmf-dist/fonts/pk/
-ljfour/public/cm/dpi600/cmmi10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfo
-ur/public/cm/dpi600/cmex10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/p
-ublic/cm/dpi600/cmsy10.pk> </cs/home/locw/.cache/texlive/texmf-var/fonts/pk/ljf
-our/public/cm/cmbx12.600pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/publ
-ic/cm/dpi600/cmbx10.pk> </cs/home/locw/.cache/texlive/texmf-var/fonts/pk/ljfour
-/public/cm/cmbx12.720pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/
-cm/dpi600/cmr10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dp
-i600/cmr12.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/
-cmr17.pk>
-Output written on CS2006-P1-Report.pdf (8 pages, 92683 bytes).
+ 38i,8n,23p,2051b,213s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr8.pk> </u
+sr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr6.pk> </usr/sha
+re/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr7.pk> </usr/share/tex
+live/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmmi10.pk> </usr/share/texlive
+/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmex10.pk> </usr/share/texlive/tex
+mf-dist/fonts/pk/ljfour/public/cm/dpi600/cmsy10.pk> </cs/home/locw/.cache/texli
+ve/texmf-var/fonts/pk/ljfour/public/cm/cmbx12.600pk> </usr/share/texlive/texmf-
+dist/fonts/pk/ljfour/public/cm/dpi600/cmbx10.pk> </cs/home/locw/.cache/texlive/
+texmf-var/fonts/pk/ljfour/public/cm/cmbx12.720pk> </usr/share/texlive/texmf-dis
+t/fonts/pk/ljfour/public/cm/dpi600/cmr10.pk> </usr/share/texlive/texmf-dist/fon
+ts/pk/ljfour/public/cm/dpi600/cmr12.pk> </usr/share/texlive/texmf-dist/fonts/pk
+/ljfour/public/cm/dpi600/cmr17.pk>
+Output written on CS2006-P1-Report.pdf (10 pages, 189874 bytes).
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 375 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

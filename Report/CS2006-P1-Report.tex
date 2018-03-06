@@ -60,7 +60,6 @@ The following functionality has been implemented:
 		The follow additional features have also been implemented:
 		\begin{itemize}
 			\item An iterator class, IteratorOfTwistedIntMatrix, has been implemented in twisted\_int\_matrix.py file which iterates over an instance of TwistedIntMatrix from top left to bottom right across the TwistedInt elements. As with the IteratorOfTwistedIntegers iterator, this iterator has a hasNext(), next() and \_\_init\_\_ functions.
-			\item TODO
 		\end{itemize}
 
 	\section{Design and Implementation}
@@ -81,21 +80,49 @@ The following functionality has been implemented:
 		\end{itemize}
 		
 	\section{Evidence of Testing}	
-		The code contains basic example docTests for every function. The majority of the testing is inside the unit tests script. Here should be all the proof of functions workign and required testing from the specification
+		The code contains basic example docTests for every function. The output of which follows on the next page \footnote{Terminal output would have been directly included within this report rather than as a screen shot but the characters disagree with latex formatting}. The output of unit tests would have been displayed but as discussed in the Known Problems section, we could unfortunately not integrate them with the final implemenation. The results shown can also be found in results.txt. 
+		\newpage
+		
+			\includegraphics[scale=0.5]{Test1.png} \\\\
+			\includegraphics[scale=0.5]{Test2.png} \footnote{The 1 failure is the due to repeated results being printed due to a bug with the contains function when passing in the same matrix multiple times. This is discussed in the Known Problems section.}
 		
 	\section{Known Problems}
-		For the algorithm of hard requirement 1 that aims to return a set of unique matrices produced as a result of multiplying a list of matrices in different permutations, the list of matrices produced contain repeated values. This is because for some reason when the contains function of the twisted\_int\_matrix 
+		For the algorithm of hard requirement 1 that aims to return a set of unique matrices produced as a result of multiplying a list of matrices in different permutations, the list of matrices produced contains repeated values when identical matrices are multiplied. This is because for some reason the contains function does not identify values that have already been added to the list of generated matrices correctly.
+		
+The unit tests are not correctly integrated with the system properly as they struggle to handle custom exceptions. They could also be more extensive. Therefore the only testing that successfully works is the docTesting from the second hard requirement.
 		
 	\section{Problems Overcome}
+	Throughout the practical we overcame the challenge of working with multiple files in Python for the first time, as well as using docStrings and docTests with which we were unfamiliar. The implementation of the matrix functions were also challenging due to the extensive use of iteration but overall we managed to produce a working solution.
 
 	\section{Summary of Provenance}
-			\subsection{Code Implemented by the Group} 
-
-			\subsection{Code Modified From the Provided Example Code}
-
-			\subsection{Code Sourced From Elsewhere}
+			\begin{itemize}
+				\item 160001362:
+					\begin{itemize}
+						\item Basic Specification
+						\item Easy Requirement 1
+						\item Part of Easy Requirement 2
+						\item Medium Requirement 2
+						\item Medium Requirement 3
+						\item Hard Requirement 1
+					\end{itemize}
+					
+				\item 160012817:
+					\begin{itemize}
+						\item Part of Easy Requirement 2
+						\item Easy Requirement 3
+						\item Medium Requirement 1
+						\item Hard Requirement 2
+						\item General testing, validation (with exceptions) and maintenance.
+					\end{itemize}
+					
+				\item 160013384: \footnote{Was sick for a week during development}
+					\begin{itemize}
+						\item Unit Testing 
+					\end{itemize}
+			\end{itemize}
 				
 	
 \section{Conclusion}
+
 
 \end{document}
