@@ -1,50 +1,59 @@
 import sys
 import unittest
 import random
-from twisted_int import *
-from checker import *
-from twisted_int_matrix import *
-from twisted_integers import *
+from main import *
+from exceptions import *
 
+def suite():
+    loader = unittest.TestLoader()
+    testsuite = loader.loadTestsFromTestCase(TwistedIntTests)
+    return testsuite
+
+def test():
+    testsuite = suite()
+    runner = unittest.TextTestRunner(sys.stdout, verbosity=2)
+    result = runner.run(testsuite)
 
 class TwistedIntTests(unittest.TestCase):
+    """Class for running unit tests
+    
+    run with $ python unit_tests.py"""
 
-    def suite():
-        loader = unittest.TestLoader()
-        testsuite = loader.loadTestsFromTestCase(TwistedIntTests)
-        return testsuite
 
-    def test():
-        testsuite = suite()
-        runner = unittest.TextTestRunner(sys.stdout, verbosity=2)
-        result = runner.run(testsuite)
+    # INITIALISATION
 
-    def test_NegativeInitMod(self):
-        self.assertRaises(InvalidModError, TwistedInt, 5,-1)
+    def test_init_string_mod(self):
+        self.assertRaises(TypeError, TwistedInt(2,"three"))
 
-    def test_LargerInitValue(self):
-        self.assertRaises(InvalidValError, TwistedInt, 2,1)
+    def test_init_string_val(self):
+        self.assertRaises(TypeError, TwistedInt("two",3))
 
-    def test_StringMod(self):
-        self.assertRaises(TypeError, TwistedInt, 2,"three")
+    def test_init_negative_mod(self):
+        self.assertRaises(InvalidModError, TwistedInt(5,-1))
 
-    def test_StringValue(self):
-        self.assertRaises(TypeError, TwistedInt, "two",3)
+    def test_init_negative_val(self):
+        self.assertRaises(InvalidValError, TwistedInt(-1, 1))
 
-    def test_ValidInit(self):
+    def test_init_larger_val(self):
+        self.assertRaises(InvalidValError, TwistedInt(2,1))
+
+    def test_init_valid(self):
         testTwistedInt = TwistedInt(1,2)
         self.assertEqual(testTwistedInt.object, 1)
         self.assertEqual(testTwistedInt.n, 2)
+    # STR
 
-    def test_Str(self):
+    def test_str_output(self):
         self.assertEqual(str(TwistedInt(2,3)), "<2:3>")
+    #MUL
 
-    """def test_WrongModsMul(self):
-        a = TwistedInt(1,5)
-        b= TwistedInt(2,6)
-        self.assertRaises(MismatchedModError, a* b)"""
+    def test_mul_mismatched_mod(self):
+        a = TwistedInt(2,4)
+        b = TwistedInt(2,5)
+        self.assertRaises(MismatchedModError, (a*b))
 
-    def test_ValidMul(self):
+
+    def test_mul_valid(self):
         a = TwistedInt(2,5)
         b = TwistedInt(2,5)
         self.assertEqual((a*b).object, 3)
@@ -190,5 +199,6 @@ class TestTwistedIntMatrix(unittest.TestCase):
         tim2 = TwistedIntMatrix(1,2,[c,d])
         """
 
+"""Run tests from terminal"""
 if __name__ == '__main__':
     unittest.main()

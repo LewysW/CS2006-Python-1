@@ -125,7 +125,7 @@ class TwistedInt:
         return TwistedInt(addValue % self.n, self.n)        
 
 
-"""Run Doctest in Docstrings"""
+"""Run Doctest in Docstrings from terminal"""
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
