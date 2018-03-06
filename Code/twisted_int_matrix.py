@@ -246,16 +246,17 @@ class TwistedIntMatrix:
         return TwistedIntMatrix(self.x, self.y, results)
 
 
-
-# Returns the set of possible matrices given a list of matrices
-#TODO docstring
 def getPossibleMatrices(matrices):
-    """Returns 
+    """Returns all the possible results of multiplying together a list of matrices.
+
     Args:
+        martices - a list of matrices to look at
 
     Returns:
+        list - a list of all the possible matrix results
 
     Raises:
+        IndexError
 
     Examples:
         >>> a = TwistedInt(1,2)
@@ -266,76 +267,159 @@ def getPossibleMatrices(matrices):
         <0:2> <0:2> 
         <0:2> <0:2> 
     """
-
+            # raises exceptions
     if matrices == []:
-        raise IndexError("Expected a list containing 1+ matrices")
+        raise IndexError("Expected a list containing 1 or more matrices")
 
     from itertools import permutations
-    #List to store results. Set can't tell difference between matrix objects
+            # list to store results. Set can't tell difference between matrix objects
     results = []
 
-    # Iterates over the unique permutations of index orderings
+            # iterates over the unique permutations of index orderings
     for x in sorted(set(permutations(range(len(matrices)), len(matrices)))):
-        # Initialises temp with matrix at 0th index for current permutation
+            # initialises temp with matrix at 0th index for current permutation
         temp = matrices[x[0]]
         try:
-            # Iterates over indices of remaining matrices
+            # iterates over indices of remaining matrices
             for i in range(1, len(x)):
-                # Multiplies initial matrix by every other index
+            # multiplies initial matrix by every other index
                 temp *= matrices[x[i]]
 
-            # Adds result to list
+            # adds result to list
             if not(contains(results, temp)):
                 results.append(temp)
-                results.append("\n")
         except ValueError:
-            # If matrices are not computable then contiues to next permutation of matrice orderings
+            # if matrices are not computable then contiues to next permutation of matrice orderings
             continue
 
     return results
 
-# Returns whether or not matrix is present in list
-#TODO docstring
+
 def contains(matrixList, matrix):
-    for i in range(len(matrixList)):
-        iteratorList = IteratorOfTwistedIntMatrix(matrixList[i])
-        iteratorMatrix = IteratorOfTwistedIntMatrix(matrix)
+    """Checks to see if a matrix is present in a list.
 
-        while (iteratorMatrix.hasNext() and iteratorList.hasNext()):
-            equal = (iteratorMatrix.next().object == iteratorList.next().object)
+    Args:
+        matrixList - a list of matrices
+        matrix - the matrix to look for in the list
 
-        if (equal):
-            return equal
+    Returns:
+        bool - True if inside the list, False if not
 
+    Raises:
+        TypeError
+        IndexError
+
+    Examples:
+        >>> a = TwistedInt(1,2)
+        >>> aa = TwistedIntMatrix(1,1,[a])
+        >>> bb = TwistedIntMatrix(1,2,[a,a])
+        >>> list = [aa, aa]
+        >>> contains(list, bb)
+        False
+        >>> contains(list, aa)
+        True
+    """
+            # raises exceptions
+    if type(matrixList) is not list:
+        raise TypeError("Expected first argument to be a list of TwistedIntMatrix")
+    if type(matrix) is not TwistedIntMatrix:
+        raise TypeError("Expected second argument to be a TwistedIntMatrix")
+    if matrixList == []:
+        raise IndexError("Expected a list containing 1 or more Matrices")
+            # iterate through list
+    for m in matrixList:
+            # check that matrices are the same size
+        if m.x * m.y == matrix.x * matrix.y:
+            # initialise iterators
+            iteratorM = IteratorOfTwistedIntMatrix(m)
+            iteratorN = IteratorOfTwistedIntMatrix(matrix)
+            # go through iterators and check that next() is the same
+            while (iteratorM.hasNext() or iteratorN.hasNext()):
+                equal = (iteratorM.next().object == iteratorN.next().object)
+            
+            if equal:
+                return True
     return False
 
 
-#TODO docstring
 class IteratorOfTwistedIntMatrix:
+    """Iterator for a Matrix of TwistedInts
+    """
 
-    # Sets twistedIntegers to list to be iterated over
-    # and sets initial index to 0
-    #TODO docstring
     def __init__(self, matrix):
+        """Creates a new Iterator.
+
+        Iterator is linked to a Matrix of TwistedInts, and is used for iterating through the matrix
+
+        Args:
+            matrix - TwistedIntMatrix to be iterated through
+
+        Creates:
+            IteratorOfTwistedIntMatrix - the iterator to iterate through a matrix
+
+        Raises:
+            TypeError
+
+        Examples:
+            >>> a = TwistedInt(1,2)
+            >>> aa = TwistedIntMatrix(1,1,[a])
+            >>> iterator = IteratorOfTwistedIntMatrix(aa)
+            >>> iterator.hasNext()
+            True
+        """
+                # raises exceptions
+        if type(matrix) is not TwistedIntMatrix:
+            raise TypeError("Expected arument to be a TwistedIntMatrix")
+                # initialises
         self.twistedIntMatrix = matrix
         self.x = 0
         self.y = 0
 
-    # Checks if iterator has next element from TwistedIntegers
-    #TODO docstring
+
     def hasNext(self):
+        """Checks to see if there is another element in the iterator
+        
+        Returns:
+            bool - True if iterator has next, False otherwise
+
+        Examples:
+            >>> a = TwistedInt(1,2)
+            >>> aa = TwistedIntMatrix(1,1,[a])
+            >>> iterator = IteratorOfTwistedIntMatrix(aa)
+            >>> iterator.hasNext()
+            True
+        """
+
         return (self.x < self.twistedIntMatrix.x) and (self.y < self.twistedIntMatrix.y)
 
     # Gets next element from TwistedIntegers if there is one and increments Index
     # otherwise raises index error.
     #TODO docstring
     def next(self):
+        """Gets the next element of the Matrix.
+
+        Goes through the matrix row by row.
+
+        Returns:
+            TwistedInt - the next element of the Matrix
+
+        Raises:
+            IndexError
+
+        Examples:
+            >>> a = TwistedInt(1,2)
+            >>> aa = TwistedIntMatrix(1,1,[a])
+            >>> iterator = IteratorOfTwistedIntMatrix(aa)
+            >>> print(iterator.next())
+            <1:2>
+        """
+                # raises exceptions
         if not(self.hasNext()):
             raise IndexError("Index of iterator is greater than or equal to length of twistedIntegers")
-
+                # initialises element
         element = self.twistedIntMatrix.matrix[self.x][self.y]
         self.y += 1
-
+                # increments iterator
         if (self.y == len(self.twistedIntMatrix.matrix[self.x])):
             self.x += 1
             self.y = 0

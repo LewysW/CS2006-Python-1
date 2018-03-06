@@ -205,13 +205,7 @@ def isDistributive(n):
         >>> isDistributive(2)
         <0:2> <0:2> <0:2>
         <0:2> <0:2> <1:2>
-        <0:2> <1:2> <0:2>
-        <0:2> <1:2> <1:2>
-        <1:2> <0:2> <0:2>
-        <1:2> <0:2> <1:2>
-        <1:2> <1:2> <0:2>
-        <1:2> <1:2> <1:2>
-        True
+        False
     """
                 # iterates through all combinations of 3 values in range
     for nums in getAllCombinations(n, 3):

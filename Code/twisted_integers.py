@@ -84,8 +84,11 @@ class TwistedIntegers:
 
 class IteratorOfTwistedIntegers:
     """Iterator for TwistedIntegers"""
+
     def __init__(self, twistedIntegers):
-        """Creates a new Iterator
+        """Creates a new Iterator.
+
+        Iterator is linked to a list of twistedIntegers, and is used for iterating over them
         
         Args:
             TwistedIntegers - twistedIntegers
