@@ -58,12 +58,15 @@ Failed example:
         print(m)
 Expected:
     <0:2> <0:2>  
-    <0:2> <0:2>  
+    <0:2> <0:2> 
+    ,  
 Got:
     <0:2> <0:2> 
     <0:2> <0:2> 
+    , 
     <0:2> <0:2> 
     <0:2> <0:2> 
+    ,
 4 items had no tests:
     __main__
     __main__.IteratorOfTwistedIntMatrix

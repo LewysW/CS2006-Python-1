@@ -269,7 +269,8 @@ def getPossibleMatrices(matrices):
         >>> for m in list:
         ...     print(m)
         <0:2> <0:2>  
-        <0:2> <0:2>  
+        <0:2> <0:2> 
+        , 
     """
             # raises exceptions
     if len(matrices) == 0:
@@ -291,6 +292,7 @@ def getPossibleMatrices(matrices):
             # adds result to list
             if not(contains(matrices, temp)):
                 results.append(temp)
+                results.append(",")
         except ValueError:
             # if matrices are not computable then contiues to next permutation of matrice orderings
             continue
