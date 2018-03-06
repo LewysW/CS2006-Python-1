@@ -38,9 +38,12 @@ The following functionality has been implemented:
 				\begin{itemize}
 					\item x $\bigoplus$ y = y $\bigoplus$ x - 'isCommutativeAdd(n)'
 					\item x $\bigotimes$ y = y $\bigotimes$ x - 'isCommutativeMul(n)'
-					\item (x $\bigoplus$ y) $\bigoplus$ z = x $\bigoplus$ (y $\bigoplus$ z) - 'isCommutativePrecedenceAdd(n)'
-					\item (x $\bigotimes$ y) $\bigotimes$ z = x $\bigotimes$ (y $\bigotimes$ z) - 'isCommutativePrecedenceMul(n)'
+					\item (x $\bigoplus$ y) $\bigoplus$ z = x $\bigoplus$ (y $\bigoplus$ z) - 'isAssociativeAdd(n)'
+					\item (x $\bigotimes$ y) $\bigotimes$ z = x $\bigotimes$ (y $\bigotimes$ z) - 'isAssociativeMul(n)'
+					\item (x $\bigoplus$ y) $\bigotimes$ z = (x $\bigotimes$ y) $\bigoplus$ (y $\bigotimes$ z) - 'isDistributive(n)'
 				\end{itemize}
+				
+				\item Easy Requirement 3 - The file twisted\_integers.py contains a class TwistedIntegers which implements a data structure representing Zn with respect to the operations a $\bigoplus$ b = (a $\bigoplus$ b) mod n and a $\bigotimes$ b = (a $\bigotimes$ b) mod n and contains the methods \_\_init\_\_, \_\_str\_\_ and size where size returns the number of elements in Zn.
 			\end{itemize}
 
 		\subsubsection{Medium}
