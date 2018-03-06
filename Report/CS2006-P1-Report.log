@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.3)  6 MAR 2018 16:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.3)  6 MAR 2018 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -204,7 +204,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--58
 
  []
 
-[4] [5] (./CS2006-P1-Report.aux) ) 
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+[5] [6] (./CS2006-P1-Report.aux) ) 
 Here is how much of TeX's memory you used:
  1511 strings out of 493039
  21704 string characters out of 6136944
@@ -212,7 +227,7 @@ Here is how much of TeX's memory you used:
  5059 multiletter control sequences out of 15000+600000
  7895 words of font info for 28 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 38i,6n,23p,1090b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,6n,23p,1295b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
  </usr/share/texlive/texmf-dist/fonts/pk/ljfo
 ur/public/cm/dpi600/cmmi10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/p
 ublic/cm/dpi600/cmex10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/publi
@@ -223,10 +238,10 @@ lic/cm/cmbx12.720pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/d
 pi600/cmr10.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600
 /cmr12.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/cm/dpi600/cmr1
 7.pk>
-Output written on CS2006-P1-Report.pdf (5 pages, 80709 bytes).
+Output written on CS2006-P1-Report.pdf (6 pages, 83238 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 305 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
