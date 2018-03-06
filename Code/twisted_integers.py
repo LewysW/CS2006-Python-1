@@ -148,7 +148,7 @@ class IteratorOfTwistedIntegers:
 
 
 def findValAdd(n):
-    """Finds all values in the range Zn where τ + x = x
+    """Finds all values in the range Zn where t + x = x
 
     Uses iterator to find all values to test against, then tests them to see
     if valid, add them to the list.
@@ -175,18 +175,18 @@ def findValAdd(n):
     validInt = True
 
     while iteratorT.hasNext():
-        τ = iteratorT.next()
+        t = iteratorT.next()
         iteratorX = IteratorOfTwistedIntegers(TwistedIntegers(n))
 
         while iteratorX.hasNext():
             x = iteratorX.next()
 
-            if (τ + x).object != x.object:
+            if (t + x).object != x.object:
                 validInt = False
                 break
 
         if validInt:
-            validIntegers.append(str(τ))
+            validIntegers.append(str(t))
 
         validInt = True
 
@@ -194,7 +194,7 @@ def findValAdd(n):
 
 
 def findValMul(n):
-    """Finds all values in the range Zn where ε + x = x
+    """Finds all values in the range Zn where e + x = x
 
     Uses iterator to find all values to test against, then tests them to see
     if valid, add them to the list.
@@ -221,21 +221,25 @@ def findValMul(n):
     validInt = True
 
     while iteratorE.hasNext():
-        ε = iteratorE.next()
+        e = iteratorE.next()
         iteratorX = IteratorOfTwistedIntegers(TwistedIntegers(n))
 
         while iteratorX.hasNext():
             x = iteratorX.next()
 
-            if (ε + x).object != x.object:
+            if (e + x).object != x.object:
                 validInt = False
                 break
 
         if validInt:
-            validIntegers.append(str(ε))
+            validIntegers.append(str(e))
 
         validInt = True
 
     return validIntegers
 
 
+"""Run Doctest in Docstrings"""
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

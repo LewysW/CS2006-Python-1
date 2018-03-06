@@ -44,9 +44,9 @@ class TwistedIntMatrix:
         self.iterator = IteratorOfTwistedIntMatrix(self)
                 # populates the matrix using the list of twisted ints.
         currentInt = 0
-        for i in range(0, x):
+        for i in range(x):
             self.matrix.append([])
-            for j in range(0, y):
+            for j in range(y):
                 self.matrix[i].append(self.twistedInts[currentInt])
                 currentInt += 1
 
@@ -127,30 +127,68 @@ class TwistedIntMatrix:
                 # goes through matrix and does multiplication
         for x in range(self.x):
             for y in range(other.y):
-                results.append(self.calcDotProduct(self.matrix[x], self.getCol(other, y), self.n))
+                results.append(self.calcDotProduct(self.matrix[x], other.getCol(y), self.n))
                 # returns the result
         return TwistedIntMatrix(self.x, other.y, results)
 
-    # Gets the dot product of a given row and column of two matrices
-    #TODO docstring
-    def calcDotProduct(self, list1, list2, n):
+
+    def calcDotProduct(self, row, col, n):
+        """Calculates the 'Dot Product' of a row & column of two matrices.
+
+        All elements of a row . all elements of a column
+        e.g. (1, 2) . (3)
+                      (4)
+            = (1 * 3) + (2 * 4)
+              (but using twistedInt multiplication and addition) 
+        This should only be called from __mul__, so shouldn't need to check for / raise exceptions
+
+        Args:
+            row - a row of a matrix for the dotProduct
+            col - a column of the matrix for the dotProduct
+            n - Mod value of the twistedInts in the matrix
+
+        Returns:
+            TwistedInt - the value of the dotProduct
+
+        Examples:
+            >>> a = TwistedInt(1,2)
+            >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+            >>> print(aa.calcDotProduct([a, a], [a, a], 2))
+            <0:2>
         """
-        """
+                # initialises return value
         dotProduct = TwistedInt(0, n)
-
-        for i in range(0, len(list1)):
-            dotProduct += list1[i] * list2[i]
-
+                # dot products
+        for i in range(len(row)):
+            dotProduct += row[i] * col[i]
         return dotProduct
 
-    # Returns the column at index y of a given matrix
-    #TODO docstring
-    def getCol(self, intMatrix, y):
+
+    def getCol(self, y):
+        """Gets all results in a single column of a matrix.
+
+        Iterates through rows of a matrix, adding elements of a single column to a list
+
+        Args:
+            y - the y column number to find 
+
+        Returns:
+            list - a list of all the values in the column given
+
+        Examples:
+            >>> a = TwistedInt(1,2)
+            >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+            >>> col = aa.getCol(0)
+            >>> for t in col:
+            ...     print(t)
+            <1:2>
+            <1:2>
         """
-        """
+                # initialise return list
         col = []
-        for x in range(0, intMatrix.x):
-            col.append(intMatrix.matrix[x][y])
+                # populate list
+        for x in range(self.x):
+            col.append(self.matrix[x][y])
 
         return col
 
@@ -158,7 +196,7 @@ class TwistedIntMatrix:
     def twistedIntMul(self, tInt):
         """Multiplies a matrix by a TwistedInt.
 
-        This should only be called from __mul__, so no need to check type of tInt
+        This should only be called from __mul__, so no need to check type of tInt or raise exceptions
 
         Args:
             tInt - TwistedInt to multiply by
@@ -207,69 +245,70 @@ class TwistedIntMatrix:
                 results.append(self.matrix[x][y] + tInt)
         return TwistedIntMatrix(self.x, self.y, results)
 
-    # Returns the set of possible matrices given a list of matrices
-    #TODO docstring
-    @staticmethod
-    def getPossibleMatrices(matrices):
-        from itertools import permutations
-        #List to store results. Set can't tell difference between matrix objects
-        results = []
-
-        # Iterates over the unique permutations of index orderings
-        for x in sorted(set(permutations(range(0, len(matrices)), len(matrices)))):
-            # Initialises temp with matrix at 0th index for current permutation
-            temp = matrices[x[0]]
-            try:
-                # Iterates over indices of remaining matrices
-                for i in range(1, len(x)):
-                    # Multiplies initial matrix by every other index
-                    temp *= matrices[x[i]]
-
-                # Adds result to list
-                if not(TwistedIntMatrix.contains(results, temp)):
-                    results.append(temp)
-            except ValueError:
-                # If matrices are not computable then contiues to next permutation of matrice orderings
-                continue
-
-        return results
-
-    # Returns whether or not matrix is present in list
-    #TODO docstring
-    @staticmethod
-    def contains(matrixList, matrix):
-        for i in range(0, len(matrixList)):
-            iteratorList = IteratorOfTwistedIntMatrix(matrixList[i])
-            iteratorMatrix = IteratorOfTwistedIntMatrix(matrix)
-
-            while (iteratorMatrix.hasNext() and iteratorList.hasNext()):
-                equal = (iteratorMatrix.next().object == iteratorList.next().object)
-
-            if (equal):
-                return equal
-
-        return False
 
 
-    # TODO remove this
-    #TODO docstring
-    @staticmethod
-    def test():
-        a = TwistedInt(0,9)
-        b = TwistedInt(1,9)
-        c = TwistedInt(2,9)
+# Returns the set of possible matrices given a list of matrices
+#TODO docstring
+def getPossibleMatrices(matrices):
+    """Returns 
+    Args:
 
+    Returns:
 
-        matrix = TwistedIntMatrix(1,1,[a])
-        matrix1 = TwistedIntMatrix(1,1,[b])
-        matrix2 = TwistedIntMatrix(1,1,[c])
+    Raises:
 
-        matrices = [matrix, matrix1,matrix2]
+    Examples:
+        >>> a = TwistedInt(1,2)
+        >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+        >>> list = getPossibleMatrices([aa, aa])
+        >>> for m in list:
+        ...     print(m)
+        <0:2> <0:2> 
+        <0:2> <0:2> 
+    """
 
-        results = (TwistedIntMatrix.getPossibleMatrices(matrices))
+    if matrices == []:
+        raise IndexError("Expected a list containing 1+ matrices")
 
-        for x in results:
-            print(x)
+    from itertools import permutations
+    #List to store results. Set can't tell difference between matrix objects
+    results = []
+
+    # Iterates over the unique permutations of index orderings
+    for x in sorted(set(permutations(range(len(matrices)), len(matrices)))):
+        # Initialises temp with matrix at 0th index for current permutation
+        temp = matrices[x[0]]
+        try:
+            # Iterates over indices of remaining matrices
+            for i in range(1, len(x)):
+                # Multiplies initial matrix by every other index
+                temp *= matrices[x[i]]
+
+            # Adds result to list
+            if not(contains(results, temp)):
+                results.append(temp)
+                results.append("\n")
+        except ValueError:
+            # If matrices are not computable then contiues to next permutation of matrice orderings
+            continue
+
+    return results
+
+# Returns whether or not matrix is present in list
+#TODO docstring
+def contains(matrixList, matrix):
+    for i in range(len(matrixList)):
+        iteratorList = IteratorOfTwistedIntMatrix(matrixList[i])
+        iteratorMatrix = IteratorOfTwistedIntMatrix(matrix)
+
+        while (iteratorMatrix.hasNext() and iteratorList.hasNext()):
+            equal = (iteratorMatrix.next().object == iteratorList.next().object)
+
+        if (equal):
+            return equal
+
+    return False
+
 
 #TODO docstring
 class IteratorOfTwistedIntMatrix:
@@ -302,3 +341,9 @@ class IteratorOfTwistedIntMatrix:
             self.y = 0
 
         return element
+
+
+"""Run Doctest in Docstrings"""
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

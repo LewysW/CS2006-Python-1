@@ -48,7 +48,7 @@ def mulEqualToOne(n):
 
 #TODO throw exceptions for negatives
 def isCommutativeAdd(n):
-    """Tests that x ⊕ y = y ⊕ x for all x, y, z ∈ Zn
+    """Tests that x + y = y + x for all x, y, z of Zn
 
     Tests for every value under n, ignoring duplicates.
     Once <0:n> + <1:n>  = <1:n> + <0:n> has been confirmed,
@@ -81,7 +81,7 @@ def isCommutativeAdd(n):
 
 
 def isCommutativeMul(n):
-    """Tests x ⊗ y = y ⊗ x for all x, y, z ∈ Zn
+    """Tests x * y = y * x for all x, y, z of Zn
 
     Tests for every value under n, ignoring duplicates.
     Once <0:n> * <1:n>  = <1:n> * <0:n> has been confirmed,
@@ -114,7 +114,7 @@ def isCommutativeMul(n):
 
 
 def isAssociativeAdd(n):
-    """Tests (x ⊕ y) ⊕ z = x ⊕ (y ⊕ z)
+    """Tests (x + y) + z = x + (y + z)
 
     Tests for every value under n.
     Ignoring duplicates is harder here so they are currently not ignored.
@@ -152,7 +152,7 @@ def isAssociativeAdd(n):
 
 
 def isAssociativeMul(n):
-    """Tests (x ⊗ y) ⊗ z = x ⊗ (y ⊗ z)
+    """Tests (x * y) * z = x * (y * z)
 
     Tests for every value under n.
     Ignoring duplicates is not done to the same level here, as with 3 values, the possible combinations is much greater.
@@ -190,7 +190,7 @@ def isAssociativeMul(n):
 
 
 def isDistributive(n):
-    """Tests (x ⊕ y) ⊗ z = (x ⊗ z) ⊕ (y ⊗ z)
+    """Tests (x + y) * z = (x * z) + (y * z)
 
     Tests for every value under n.
     Ignoring duplicates is harder here so they are currently not ignored.
@@ -246,3 +246,9 @@ def getAllCombinations(n, r):
     """
     numList = set(product(range(n), repeat = r))
     return sorted(numList)
+
+
+"""Run Doctest in Docstrings"""
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

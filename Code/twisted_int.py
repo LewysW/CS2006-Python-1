@@ -63,7 +63,7 @@ class TwistedInt:
 
 
     def __mul__(self, other):
-        """Redefines multiplication rules for TwistedInts, following the rule: a ⊗ b = (a + b + a · b) mod n.
+        """Redefines multiplication rules for TwistedInts, following the rule: a * b = (a + b + a . b) mod n.
 
         Args:
             self - this TwistedInt
@@ -94,7 +94,7 @@ class TwistedInt:
 
 
     def __add__(self, other):
-        """Redefines addition rules for TwistedInts, following the rule: a ⊕ b = (a + b) mod n.
+        """Redefines addition rules for TwistedInts, following the rule: a + b = (a + b) mod n.
 
         Args:
             self - this TwistedInt
@@ -122,3 +122,9 @@ class TwistedInt:
                 # returns result of addition
         addValue = self.object + other.object
         return TwistedInt(addValue % self.n, self.n)        
+
+
+"""Run Doctest in Docstrings"""
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
