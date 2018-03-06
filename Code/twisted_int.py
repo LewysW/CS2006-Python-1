@@ -1,9 +1,11 @@
 from exceptions import *
 
 class TwistedInt:
-    """A class of TwistedInt, defined in the specification.
+    """A special type of Integer, but with special rules.
     
-    Has special functions for addition and multiplication (as well as converting to a string)"""
+    Acts like a normal Int, but also has special functions
+    for addition and multiplication (as well as converting to a string)
+    """
 
     # TODO Add unit tests for current functions
     def __init__(self, val, n):
@@ -14,10 +16,10 @@ class TwistedInt:
         
         Args
             val - value of the TwistedInt
-            n - mod value of the twisted int
+            n - mod value of the TwistedInt
         
         Creates:
-            TwistedInt - a new TwistedInt object
+            TwistedInt - a new type of Int
 
         Raises:
             TypeError
@@ -48,6 +50,9 @@ class TwistedInt:
 
         The TwistedInt is formatted between two spikey bois <>.
         The Value of the TwistedInt is followed by the Mod value of the TwistedInt.
+
+        Returns:
+            str: the value and mod of the TwistedInt, in the form <val:mod>
         
         Examples:
             >>> str(TwistedInt(1,2))

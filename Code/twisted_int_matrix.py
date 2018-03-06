@@ -1,27 +1,48 @@
 from twisted_integers import *
 
 class TwistedIntMatrix:
+    """A Matrix of TwistedInts.
 
-    # Creates a twisted int matrix of dimensions x, y with list of int values
-    # default values of ints are 0
-    def __init__(self, x, y, ints):
+    Stores a matrix of TwistedInts as a list. These can then be added to or multiplied with other matrices.
+    """
+
+    def __init__(self, x, y, tInts):
+        """Creates a matrix, populated with TwistedInts
+
+        Args:
+            x - x size of the matrix
+            y - y size of the matrix
+            tInts - a list of TwistedInt objects
+
+        Creates:
+            TwistedIntMatrix - a collections of TwistedInts
+            
+        Raises:
+            MatrixIndexError
+            MismatchedModError
+
+        Examples:
+            >>> a = TwistedInt(1,3); b = TwistedInt(2,3)
+            >>> print(TwistedIntMatrix(2, 3, [a, a, a, b, b, b]))
+            <1:3> <1:3> <1:3>
+            <2:3> <2:3> <2:3>
+        """
+                # raises exceptions
+        if x < 0 or y < 0:
+            raise MatrixIndexError("Size of matrix must be larger than 0")
+        if x * y != len(tInts):
+            raise MatrixIndexError("Number of elements in matrix and list do not match.")
+        for twistedInt in tInts:
+            if twistedInt.n != tInts[0].n:
+                raise MismatchedModError("Twisted ints do not all have the same mod value.")
+                # initialise
         self.x = x
         self.y = y
         self.matrix = []
-        self.twistedInts = ints
-
-        # Raises an IndexError if number of elements in matrix and list are unequal
-        if not(x * y == len(self.twistedInts)):
-            raise IndexError("Number of elements in matrix and list do not match.")
-
-        self.n = self.twistedInts[0].n
-
-        # Raises MismatchedModException if a value in the matrix has a different n to the rest.
-        for twistedInt in self.twistedInts:
-            if not(twistedInt.n == self.n):
-                raise MismatchedModException("Twisted ints do not all have the same mod value.")
-
-        # Populates the matrix using the list of twisted ints.
+        self.twistedInts = tInts
+        self.n = tInts[0].n
+        self.iterator = IteratorOfTwistedIntMatrix(self)
+                # populates the matrix using the list of twisted ints.
         currentInt = 0
         for i in range(0, x):
             self.matrix.append([])
@@ -29,45 +50,91 @@ class TwistedIntMatrix:
                 self.matrix[i].append(self.twistedInts[currentInt])
                 currentInt += 1
 
-        self.iterator = IteratorOfTwistedIntMatrix(self)
 
-    # Prints all values in the twisted int matrix
     def __str__(self):
+        """Prints the contents of the matrix.
+
+        Uses the str function of TwistedInt to output the contents of the matrix
+
+        Returns:
+            str: returns the output of the matrix as a string
+
+        Examples:
+            >>> a = TwistedInt(1,3); b = TwistedInt(2,3)
+            >>> print(TwistedIntMatrix(2, 3, [a, a, a, b, b, b]))
+            <1:3> <1:3> <1:3>
+            <2:3> <2:3> <2:3>
+        """
+                # initialises the string
         out = ""
-
-        # Current number of ints in matrix added to output
+        self.iterator = IteratorOfTwistedIntMatrix(self)
+                # current number of ints in matrix added to output
         currentInt = 0
-
+                # use iterator to output all values
         while self.iterator.hasNext():
             out += str(self.iterator.next()) + " "
-
             currentInt += 1
-
-            # Decides whether to print a new line based on y dimension and current int
+                # adds a new line character if needed
             if (currentInt % self.y) == 0:
                 out += "\n"
+        return out[:-1] # removes new line
 
-        self.iterator = IteratorOfTwistedIntMatrix(self)
-        return out
 
-    # define "*"
     def __mul__(self, other):
-        if not(self.y == other.x):
-            raise ValueError("Y dimension of matrix a is not equal to X dimension of matrix b.")
+        """Multiplies a matrix by another matrix.
 
-        if not(self.n == other.n):
-            raise MismatchedModException("Mod value of matrix a is not equal to mod value of matrix b.")
+        Multiplies the matrix using proper 'dot-product' multiplication methods
 
+        Args:
+            other - the other matrix to multiply this matrix by
+                or a TwistedInt to multiply the matrix by
+
+        Returns:
+            TwistedIntMatrix - the result of the matrix multiplication
+
+        Raises:
+            ValueError
+            MismatchedModError
+
+        Examples:
+            >>> a = TwistedInt(1,3)
+            >>> b = TwistedInt(2,3)
+            >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+            >>> bb = TwistedIntMatrix(2, 2, [a, b, a, b])
+            >>> print(aa * bb)
+            <0:3> <1:3>
+            <0:3> <1:3>
+
+            >>> a = TwistedInt(2,5)
+            >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+            >>> print(aa * a)
+            <3:5> <3:5>
+            <3:5> <3:5>
+        """
+                # switches to multiplying by TwistedInt function
+        if type(other) is TwistedInt:
+            result = self.twistedIntMul(other)
+            return result
+                # raises exceptions
+        if type(other) is not TwistedIntMatrix:
+            raise TypeError("Expected argument to be of type TwistedIntMatrix or TwistedInt")
+        if self.y != other.x:
+            raise ValueError("Y dimension of matrix a is not equal to X dimension of matrix b")
+        if self.n != other.n:
+            raise MismatchedModError("Mod value of matrix a is not equal to mod value of matrix b")
+                # initialises results
         results = []
-
-        for x in range(0, self.x):
-            for y in range(0, other.y):
+                # goes through matrix and does multiplication
+        for x in range(self.x):
+            for y in range(other.y):
                 results.append(self.calcDotProduct(self.matrix[x], self.getCol(other, y), self.n))
-
+                # returns the result
         return TwistedIntMatrix(self.x, other.y, results)
 
     # Gets the dot product of a given row and column of two matrices
     def calcDotProduct(self, list1, list2, n):
+        """
+        """
         dotProduct = TwistedInt(0, n)
 
         for i in range(0, len(list1)):
@@ -77,11 +144,66 @@ class TwistedIntMatrix:
 
     # Returns the column at index y of a given matrix
     def getCol(self, intMatrix, y):
+        """
+        """
         col = []
         for x in range(0, intMatrix.x):
             col.append(intMatrix.matrix[x][y])
 
         return col
+
+    # TODO cleanup THIS using itertools
+    def twistedIntMul(self, tInt):
+        """Multiplies a matrix by a TwistedInt.
+
+        This should only be called from __mul__, so no need to check type of tInt
+
+        Args:
+            tInt - TwistedInt to multiply by
+
+        Returns:
+            TwistedIntMatrix - the matrix result of the multiplication
+
+        Examples:
+            >>> a = TwistedInt(2,5)
+            >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+            >>> print(aa * a)
+            <3:5> <3:5>
+            <3:5> <3:5>
+        """
+                # initialises
+        results = []
+                # performs multiplication
+        for x in range(self.x):
+            for y in range(self.y):
+                results.append(self.matrix[x][y] * tInt)
+        return TwistedIntMatrix(self.x, self.y, results)
+    
+    #TODO also this
+    def __add__(self, other):
+        return self
+    
+    #TODO cleanup with itertools same as mul
+    def twistedIntAdd(self, tInt):
+        """Adds TwistedInt to all elements in a matrix.
+
+        This should only be called from __add__, so no need to check type of tInt
+
+        Args:
+            tInt - TwistedInt to add
+
+        Returns:
+            TwistedIntMatrix - the matrix result of the addition
+
+        Examples:
+        """
+                # initialises
+        results = []
+                # performs addition
+        for x in range(self.x):
+            for y in range(self.y):
+                results.append(self.matrix[x][y] + tInt)
+        return TwistedIntMatrix(self.x, self.y, results)
 
     # Returns the set of possible matrices given a list of matrices
     @staticmethod
@@ -125,7 +247,7 @@ class TwistedIntMatrix:
         return False
 
 
-
+    # TODO remove this
     @staticmethod
     def test():
         a = TwistedInt(0,9)
