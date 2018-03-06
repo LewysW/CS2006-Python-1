@@ -65,7 +65,11 @@ The following functionality has been implemented:
 		\end{itemize}
 
 	\section{Design and Implementation}
-
+		\begin{itemize}
+			\item \textbf{TwistedInt Data Structure} - The TwistedInt data structure is implemented in twisted\_int.py. It is initialised by passing an integer value 'val' and mod value 'n' into \_\_init\_\_. The constructor of the TwistedInt class will raise a TypeError exception if 'val' or 'n' are not integers and will raise the custom InvalidModError or InvalidValError if the value of n passed in is less than 0 or if val is not in Zn, 0 to (n - 1). These exceptions can be handled by any implementing code to validate the inputs of the user. \\\\ The printing of TwistedInt objects has be modified in the function \_\_str\_\_ to printed TwistedInt instances in the format "$<$object:n$>$". \\\\ TwistedInt multiplication is implemented by the \_\_mul\_\_ function which takes two TwistedInts and compares their mod n values - raising a custom MismatchedModError exception if they are not equal - and otherwise performs the operation (a + b + a . b) mod n and assigns the result to the value of a new TwistedInt (as well as the same mod n value) and returns this object. \\\\ Similarly the \_\_add\_\_ function performs the operation (a + b) mod n with two given TwistedInt instances and returns a TwistedInt instance with the result as the integer value. 
+			
+			\item \textbf{TwistedInt Data Structure} -
+		\end{itemize}
 		
 	\section{Evidence of Testing}	
 
