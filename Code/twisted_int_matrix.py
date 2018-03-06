@@ -22,10 +22,9 @@ class TwistedIntMatrix:
             MismatchedModError
 
         Examples:
-            >>> a = TwistedInt(1,3); b = TwistedInt(2,3)
-            >>> print(TwistedIntMatrix(2, 3, [a, a, a, b, b, b]))
-            <1:3> <1:3> <1:3>
-            <2:3> <2:3> <2:3>
+            >>> a = TwistedInt(1,3)
+            >>> b = TwistedInt(2,3)
+            >>> c = TwistedIntMatrix(2, 3, [a, a, a, b, b, b])
         """
                 # raises exceptions
         if x < 0 or y < 0:
@@ -60,10 +59,11 @@ class TwistedIntMatrix:
             str: returns the output of the matrix as a string
 
         Examples:
-            >>> a = TwistedInt(1,3); b = TwistedInt(2,3)
+            >>> a = TwistedInt(1,3)
+            >>> b = TwistedInt(2,3)
             >>> print(TwistedIntMatrix(2, 3, [a, a, a, b, b, b]))
-            <1:3> <1:3> <1:3>
-            <2:3> <2:3> <2:3>
+            <1:3> <1:3> <1:3> 
+            <2:3> <2:3> <2:3> 
         """
                 # initialises the string
         out = ""
@@ -102,21 +102,20 @@ class TwistedIntMatrix:
             >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
             >>> bb = TwistedIntMatrix(2, 2, [a, b, a, b])
             >>> print(aa * bb)
-            <0:3> <1:3>
-            <0:3> <1:3>
-
+            <0:3> <1:3> 
+            <0:3> <1:3> 
             >>> a = TwistedInt(2,5)
             >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
             >>> print(aa * a)
-            <3:5> <3:5>
-            <3:5> <3:5>
+            <3:5> <3:5> 
+            <3:5> <3:5> 
         """
                 # switches to multiplying by TwistedInt function
-        if type(other) is TwistedInt:
+        if isinstance(other, TwistedInt):
             result = self.twistedIntMul(other)
             return result
                 # raises exceptions
-        if type(other) is not TwistedIntMatrix:
+        if not isinstance(other, TwistedIntMatrix):
             raise TypeError("Expected argument to be of type TwistedIntMatrix or TwistedInt")
         if self.y != other.x:
             raise ValueError("Y dimension of matrix a is not equal to X dimension of matrix b")
@@ -208,8 +207,8 @@ class TwistedIntMatrix:
             >>> a = TwistedInt(2,5)
             >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
             >>> print(aa * a)
-            <3:5> <3:5>
-            <3:5> <3:5>
+            <3:5> <3:5> 
+            <3:5> <3:5> 
         """
                 # initialises
         results = []
@@ -264,17 +263,16 @@ def getPossibleMatrices(matrices):
         >>> list = getPossibleMatrices([aa, aa])
         >>> for m in list:
         ...     print(m)
-        <0:2> <0:2> 
-        <0:2> <0:2> 
+        <0:2> <0:2>  
+        <0:2> <0:2>  
     """
             # raises exceptions
-    if matrices == []:
+    if len(matrices) == 0:
         raise IndexError("Expected a list containing 1 or more matrices")
 
     from itertools import permutations
             # list to store results. Set can't tell difference between matrix objects
     results = []
-
             # iterates over the unique permutations of index orderings
     for x in sorted(set(permutations(range(len(matrices)), len(matrices)))):
             # initialises temp with matrix at 0th index for current permutation
@@ -286,7 +284,7 @@ def getPossibleMatrices(matrices):
                 temp *= matrices[x[i]]
 
             # adds result to list
-            if not(contains(results, temp)):
+            if not(contains(matrices, temp)):
                 results.append(temp)
         except ValueError:
             # if matrices are not computable then contiues to next permutation of matrice orderings
@@ -322,25 +320,49 @@ def contains(matrixList, matrix):
             # raises exceptions
     if type(matrixList) is not list:
         raise TypeError("Expected first argument to be a list of TwistedIntMatrix")
-    if type(matrix) is not TwistedIntMatrix:
+    if not isinstance(matrix, TwistedIntMatrix):
         raise TypeError("Expected second argument to be a TwistedIntMatrix")
     if matrixList == []:
         raise IndexError("Expected a list containing 1 or more Matrices")
             # iterate through list
     for m in matrixList:
-            # check that matrices are the same size
-        if m.x * m.y == matrix.x * matrix.y:
-            # initialise iterators
-            iteratorM = IteratorOfTwistedIntMatrix(m)
-            iteratorN = IteratorOfTwistedIntMatrix(matrix)
-            # go through iterators and check that next() is the same
-            while (iteratorM.hasNext() or iteratorN.hasNext()):
-                equal = (iteratorM.next().object == iteratorN.next().object)
-            
-            if equal:
-                return True
+        if equalMatrices(m, matrix):
+            return True
     return False
 
+def equalMatrices(m1, m2):
+    """Returns true or false if matrices are the same
+
+    Args:
+        m1 - a matrix
+        m2 - a matrix
+
+    Returns:
+        bool - True if same, False otherwise
+
+    Examples:
+        >>> a = TwistedInt(2,4)
+        >>> aa = TwistedIntMatrix(1, 2, [a, a])
+        >>> bb = TwistedIntMatrix(1, 2, [a, a])
+        >>> cc = TwistedIntMatrix(2, 1, [a, a])
+        >>> equalMatrices(aa, aa)
+        True
+        >>> equalMatrices(aa, bb)
+        True
+        >>> equalMatrices(aa, cc)
+        False
+    """
+            # check same size
+    if m1.x != m2.x or m1.y != m2.y:
+        return False
+            # initialise iterators
+    i1 = IteratorOfTwistedIntMatrix(m1)
+    i2 = IteratorOfTwistedIntMatrix(m2)
+            # go through iterators and check that next() is the same
+    while i1.hasNext() and i2.hasNext():
+        if i1.next().object != i2.next().object:
+            return False
+    return True
 
 class IteratorOfTwistedIntMatrix:
     """Iterator for a Matrix of TwistedInts
@@ -368,7 +390,7 @@ class IteratorOfTwistedIntMatrix:
             True
         """
                 # raises exceptions
-        if type(matrix) is not TwistedIntMatrix:
+        if not isinstance(matrix, TwistedIntMatrix):
             raise TypeError("Expected arument to be a TwistedIntMatrix")
                 # initialises
         self.twistedIntMatrix = matrix

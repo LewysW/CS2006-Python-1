@@ -85,13 +85,13 @@ class TwistedIntegers:
 class IteratorOfTwistedIntegers:
     """Iterator for TwistedIntegers"""
 
-    def __init__(self, twistedIntegers):
+    def __init__(self, tInts):
         """Creates a new Iterator.
 
         Iterator is linked to a list of twistedIntegers, and is used for iterating over them
         
         Args:
-            TwistedIntegers - twistedIntegers
+            tInts - twistedIntegers
         
         Creates:
             IteratorOfTwistedIntegers - an iterator to iterate over TwistedIntegers 
@@ -100,13 +100,16 @@ class IteratorOfTwistedIntegers:
             TypeError
         
         Examples:
-            >>> i = IteratorOfTwistedIntegers(TwistedIntegers(5))
+            >>> a = TwistedIntegers(5)
+            >>> iterator = IteratorOfTwistedIntegers(a)
+            >>> iterator.hasNext()
+            True
         """
                 # raises exceptions
-        if type(twistedIntegers) is not TwistedIntegers:
+        if not isinstance(tInts, TwistedIntegers):
             raise TypeError("IteratorOfTwistedIntegers() argument is not a TwistedIntegers object")
                 # initialises
-        self.twistedIntegers = twistedIntegers
+        self.twistedIntegers = tInts
         self.index = 0
 
 
@@ -119,7 +122,7 @@ class IteratorOfTwistedIntegers:
         Examples:
             >>> i = IteratorOfTwistedIntegers(TwistedIntegers(5))
             >>> i.hasNext()
-            True            
+            True
         """
 
         return self.index < self.twistedIntegers.size()

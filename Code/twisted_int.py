@@ -28,8 +28,6 @@ class TwistedInt:
 
         Examples:
             >>> a = TwistedInt(2, 3)
-            >>> print(a)
-            <2:3>
         """
                 # raises exceptions
         if type(val) is str:
@@ -57,6 +55,9 @@ class TwistedInt:
         Examples:
             >>> str(TwistedInt(1,2))
             '<1:2>'
+            >>> a = TwistedInt(2, 3)
+            >>> print(a)
+            <2:3>
         """
                 # outputs as <val:mod>
         return "<" + str(self.object)+ ":" + str(self.n) + ">"
