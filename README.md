@@ -43,6 +43,9 @@ Actually returns
     <0:2> <0:2> 
     <0:2> <0:2> 
 
+# 2
+Matrix addition with another matrix is unimplemented
+
 # Other
 do unit testing
 personal report
