@@ -191,7 +191,6 @@ class TwistedIntMatrix:
 
         return col
 
-    # TODO cleanup THIS using itertools
     def twistedIntMul(self, tInt):
         """Multiplies a matrix by a TwistedInt.
 
@@ -218,11 +217,13 @@ class TwistedIntMatrix:
                 results.append(self.matrix[x][y] * tInt)
         return TwistedIntMatrix(self.x, self.y, results)
     
-    #TODO also this
     def __add__(self, other):
-        return self
+        if isinstance(other, TwistedInt):
+            result = self.twistedIntAdd(other)
+            return result
+        
+        raise Exception("Add function unimplemented")
     
-    #TODO cleanup with itertools same as mul
     def twistedIntAdd(self, tInt):
         """Adds TwistedInt to all elements in a matrix.
 
@@ -235,6 +236,10 @@ class TwistedIntMatrix:
             TwistedIntMatrix - the matrix result of the addition
 
         Examples:
+            >>> a = TwistedInt(2,4)
+            >>> aa = TwistedIntMatrix(1, 2, [a, a])
+            >>> print(aa + a)
+            <0:4> <0:4> 
         """
                 # initialises
         results = []
@@ -414,9 +419,6 @@ class IteratorOfTwistedIntMatrix:
 
         return (self.x < self.twistedIntMatrix.x) and (self.y < self.twistedIntMatrix.y)
 
-    # Gets next element from TwistedIntegers if there is one and increments Index
-    # otherwise raises index error.
-    #TODO docstring
     def next(self):
         """Gets the next element of the Matrix.
 
