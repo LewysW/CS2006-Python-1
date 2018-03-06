@@ -1,0 +1,73 @@
+\documentclass[11]{article}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+\title{CS2006 Python Project 1 - \\Classes and Iterators in Python}
+\date{06/03/2018}
+\author{Matriculation Numbers: 160001362, 160014817, 160013384 (Group 14)}
+
+\begin{document}
+	\maketitle
+	\newpage
+	\tableofcontents
+	
+	\newpage
+	\section{Summary of Functionality}
+		This practical specified the development of a mathematical system to explore discrete mathematical structures using the programming language Python. \\\\
+The provided README file gives detailed instructions on what the solution can do and how to run each command. \\\\
+The following functionality has been implemented:
+	\subsection{Basic Specification:}
+		All requirements from the basic specification have been implemented. They are as follows:	
+		\begin{itemize}
+			\item An implementation of the twisted integers data structure which supports addition and multiplication given by the following rules:
+				\begin{itemize}
+				\item a $\bigoplus$ b = (a + b) mod n 
+				\item a $\bigotimes$ b = (a + b + a · b) mod n
+				\end{itemize}
+			\item Exceptions that are used to check that user input is valid.
+			\item Unit tests to ensure the correctness of the solution.
+		\end{itemize}
+	
+	\subsection{Additional Requirements:}
+	 From the suggested additional requirements, all of the easy, medium and hard requirements have been implemented:
+	 	\subsubsection{Easy}
+			\begin{itemize}
+				\item Easy Requirement 1 - The function 'mulEqualToOne(n)' has been developed in the checker.py file which calculates for a given n all elements x $\epsilon$ Zn such that x $\bigotimes$ x = 1, where 1 $\epsilon$ Zn
+				\item Easy Requirement 2 - For a given n functions (in checker.py) have been developed to check whether the following properties hold for all x, y, z $\epsilon$ Zn (each of which returns a boolean signifying whether the properties hold):
+				\begin{itemize}
+					\item x $\bigoplus$ y = y $\bigoplus$ x - 'isCommutativeAdd(n)'
+					\item x $\bigotimes$ y = y $\bigotimes$ x - 'isCommutativeMul(n)'
+					\item (x $\bigoplus$ y) $\bigoplus$ z = x $\bigoplus$ (y $\bigoplus$ z) - 'isCommutativePrecedenceAdd(n)'
+					\item (x $\bigotimes$ y) $\bigotimes$ z = x $\bigotimes$ (y $\bigotimes$ z) - 'isCommutativePrecedenceMul(n)'
+				\end{itemize}
+			\end{itemize}
+
+		\subsubsection{Medium}
+
+		\subsubsection{Hard}
+
+	\subsection{Further Features:}
+
+	\section{Design and Implementation}
+
+		
+	\section{Evidence of Testing}	
+
+		
+	\section{Known Problems}
+
+		
+	\section{Problems Overcome}
+
+	\section{Summary of Provenance}
+			\subsection{Code Implemented by the Group} 
+
+			\subsection{Code Modified From the Provided Source Files}
+
+			\subsection{Code Sourced From Elsewhere}
+				
+	
+\section{Conclusion}
+
+\end{document}

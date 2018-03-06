@@ -113,7 +113,7 @@ def isCommutativeMul(n):
     return True
 
 
-def isCommutativePrecedenceAdd(n):
+def isAssociativeAdd(n):
     """Tests (x ⊕ y) ⊕ z = x ⊕ (y ⊕ z)
 
     Tests for every value under n.
@@ -126,7 +126,7 @@ def isCommutativePrecedenceAdd(n):
         bool: True if true for all values, False otherwise
 
     Examples:
-        >>> isCommutativePrecedenceAdd(2)
+        >>> isAssociativeAdd(2)
         <0:2> <0:2> <0:2>
         <0:2> <0:2> <1:2>
         <0:2> <1:2> <0:2>
@@ -151,7 +151,7 @@ def isCommutativePrecedenceAdd(n):
     return True
 
 
-def isCommutativePrecedenceMul(n):
+def isAssociativeMul(n):
     """Tests (x ⊗ y) ⊗ z = x ⊗ (y ⊗ z)
 
     Tests for every value under n.
@@ -164,7 +164,7 @@ def isCommutativePrecedenceMul(n):
         bool: True if true for all values, False otherwise
 
     Examples:
-        >>> isCommutativePrecedenceMul(2)
+        >>> isAssociativeMul(2)
         <0:2> <0:2> <0:2>
         <0:2> <0:2> <1:2>
         <0:2> <1:2> <0:2>
@@ -189,7 +189,7 @@ def isCommutativePrecedenceMul(n):
     return True
 
 
-def isCommutativeCommonFac(n):
+def isDistributive(n):
     """Tests (x ⊕ y) ⊗ z = (x ⊗ z) ⊕ (y ⊗ z)
 
     Tests for every value under n.
@@ -202,7 +202,7 @@ def isCommutativeCommonFac(n):
         bool: True if true for all values, False otherwise
 
     Examples:
-        >>> isCommutativeCommonFac(2)
+        >>> isDistributive(2)
         <0:2> <0:2> <0:2>
         <0:2> <0:2> <1:2>
         <0:2> <1:2> <0:2>
