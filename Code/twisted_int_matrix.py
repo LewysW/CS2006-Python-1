@@ -132,6 +132,7 @@ class TwistedIntMatrix:
         return TwistedIntMatrix(self.x, other.y, results)
 
     # Gets the dot product of a given row and column of two matrices
+    #TODO docstring
     def calcDotProduct(self, list1, list2, n):
         """
         """
@@ -143,6 +144,7 @@ class TwistedIntMatrix:
         return dotProduct
 
     # Returns the column at index y of a given matrix
+    #TODO docstring
     def getCol(self, intMatrix, y):
         """
         """
@@ -206,6 +208,7 @@ class TwistedIntMatrix:
         return TwistedIntMatrix(self.x, self.y, results)
 
     # Returns the set of possible matrices given a list of matrices
+    #TODO docstring
     @staticmethod
     def getPossibleMatrices(matrices):
         from itertools import permutations
@@ -232,6 +235,7 @@ class TwistedIntMatrix:
         return results
 
     # Returns whether or not matrix is present in list
+    #TODO docstring
     @staticmethod
     def contains(matrixList, matrix):
         for i in range(0, len(matrixList)):
@@ -248,6 +252,7 @@ class TwistedIntMatrix:
 
 
     # TODO remove this
+    #TODO docstring
     @staticmethod
     def test():
         a = TwistedInt(0,9)
@@ -266,21 +271,25 @@ class TwistedIntMatrix:
         for x in results:
             print(x)
 
+#TODO docstring
 class IteratorOfTwistedIntMatrix:
 
     # Sets twistedIntegers to list to be iterated over
     # and sets initial index to 0
+    #TODO docstring
     def __init__(self, matrix):
         self.twistedIntMatrix = matrix
         self.x = 0
         self.y = 0
 
     # Checks if iterator has next element from TwistedIntegers
+    #TODO docstring
     def hasNext(self):
         return (self.x < self.twistedIntMatrix.x) and (self.y < self.twistedIntMatrix.y)
 
     # Gets next element from TwistedIntegers if there is one and increments Index
     # otherwise raises index error.
+    #TODO docstring
     def next(self):
         if not(self.hasNext()):
             raise IndexError("Index of iterator is greater than or equal to length of twistedIntegers")
