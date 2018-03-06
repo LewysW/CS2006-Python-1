@@ -19,9 +19,29 @@ Tests have been included as DocTests. These can be run in the terminal with (for
 
     $ python twisted_int.py -v
 
-The results of these have been stored in the file docTest results.txt
+The results of these have been stored in the file docTest results.txt. As you can see, one of these tests fails.
 
 There should be lots of unit tests. There isn't really
+
+# Known Bugs
+
+# 1
+getPossibleMatrices
+
+    >>> a = TwistedInt(1,2)
+    >>> aa = TwistedIntMatrix(2, 2, [a, a, a, a])
+    >>> list = getPossibleMatrices([aa, aa])
+    >>> for m in list:
+    ...     print(m)
+    <0:2> <0:2>  
+    <0:2> <0:2> 
+
+Actually returns
+
+    <0:2> <0:2> 
+    <0:2> <0:2> 
+    <0:2> <0:2> 
+    <0:2> <0:2> 
 
 # Other
 do unit testing
