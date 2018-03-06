@@ -63,8 +63,8 @@ class TwistedIntegersTests(unittest.TestCase):
 
     def test_ValidInit(self):
         a = TwistedIntegers(2)
-        self.assertEqual(print(a.integers[0]), print(TwistedInt(0,2)))
-        self.assertEqual(print(a.integers[1]), print(TwistedInt(1,2)))
+        self.assertEqual(str(a.integers[0]), str(TwistedInt(0,2)))
+        self.assertEqual(str(a.integers[1]), str(TwistedInt(1,2)))
 
     def test_Str(self):
         a = TwistedIntegers(2)
@@ -84,7 +84,7 @@ class IteratorTests(unittest.TestCase):
         a = TwistedIntegers(1)
         it = IteratorOfTwistedIntegers(a)
         self.assertEqual(it.index, 0)
-        self.assertEqual(print(it.twistedIntegers), print(a))
+        self.assertEqual(str(it.twistedIntegers), str(a))
 
     def test_HasNext(self):
         a = TwistedIntegers(2)
@@ -94,7 +94,7 @@ class IteratorTests(unittest.TestCase):
     def test_Next(self):
         a = TwistedIntegers(2)
         it = IteratorOfTwistedIntegers(a)
-        self.assertEqual(print(it.next), print(it.twistedIntegers.integers[1]))
+        self.assertEqual(str(it.next), str(it.twistedIntegers.integers[1]))
 
     def test_BadNext(self):
         a = TwistedIntegers(0)
@@ -189,16 +189,6 @@ class TestTwistedIntMatrix(unittest.TestCase):
         d = TwistedInt(2,6)
         tim2 = TwistedIntMatrix(1,2,[c,d])
         """
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     unittest.main()

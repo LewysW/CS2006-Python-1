@@ -21,7 +21,9 @@ Tests have been included as DocTests. These can be run in the terminal with (for
 
 The results of these have been stored in the file docTest results.txt. As you can see, one of these tests fails.
 
-There should be lots of unit tests. There isn't really
+There should be lots of unit tests. There is some. These are run with 
+
+    $ python unit_tests.py
 
 # Known Bugs
 
